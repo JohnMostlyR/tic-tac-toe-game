@@ -7,7 +7,7 @@ var State = function (old) {
   /*
    * public : the player who has the turn to player
    */
-  this.turn = "";
+  this.turn = '';
 
   /*
    * public : the number of moves of the AI player
@@ -25,7 +25,7 @@ var State = function (old) {
   this.board = [];
 
   /* Begin Object Construction */
-  if (typeof old !== "undefined") {
+  if (typeof old !== 'undefined') {
     // if the state is constructed using a copy of another state
     var len = old.board.length;
     this.board = new Array(len);
@@ -141,22 +141,22 @@ var Game = function (autoPlayer) {
 
       if (_state.result === "X-won")
       //X won
-        ui.switchViewTo("won");
+        view.switchViewTo("won");
       else if (_state.result === "O-won")
       //X lost
-        ui.switchViewTo("lost");
+        view.switchViewTo("lost");
       else
       //it's a draw
-        ui.switchViewTo("draw");
+        view.switchViewTo("draw");
     }
     else {
       //the game is still running
 
       if (this.currentState.turn === "X") {
-        ui.switchViewTo("human");
+        view.switchViewTo("human");
       }
       else {
-        ui.switchViewTo("robot");
+        view.switchViewTo("robot");
 
         //notify the AI player its turn has come up
         this.ai.notify("O");
