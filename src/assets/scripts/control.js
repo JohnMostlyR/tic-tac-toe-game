@@ -8,16 +8,16 @@ var globals = {};
  * when a level is clicked, it becomes highlighted and the "ai.level" variable
  * is set to the chosen level
  */
-$(".level").each(function() {
-    var $this = $(this);
-    $this.click(function() {
-        $('.selected').toggleClass('not-selected');
-        $('.selected').toggleClass('selected');
-        $this.toggleClass('not-selected');
-        $this.toggleClass('selected');
+$(".level").each(function () {
+  var $this = $(this);
+  $this.click(function () {
+    $('.selected').toggleClass('not-selected');
+    $('.selected').toggleClass('selected');
+    $this.toggleClass('not-selected');
+    $this.toggleClass('selected');
 
-        ai.level = $this.attr("id");
-    });
+    ai.level = $this.attr("id");
+  });
 });
 
 /*
@@ -25,16 +25,16 @@ $(".level").each(function() {
  * when start is clicked and a level is chosen, the game status changes to "running"
  * and UI view to swicthed to indicate that it's human's trun to play
  */
-$(".start").click(function() {
-    var selectedDiffeculty = $('.selected').attr("id");
-    if(typeof selectedDiffeculty !== "undefined") {
-        var aiPlayer = new AI(selectedDiffeculty);
-        globals.game = new Game(aiPlayer);
+$(".start").click(function () {
+  var selectedDiffeculty = $('.selected').attr("id");
+  if (typeof selectedDiffeculty !== "undefined") {
+    var aiPlayer = new AI(selectedDiffeculty);
+    globals.game = new Game(aiPlayer);
 
-        aiPlayer.plays(globals.game);
+    aiPlayer.plays(globals.game);
 
-        globals.game.start();
-    }
+    globals.game.start();
+  }
 });
 
 /*
@@ -43,21 +43,21 @@ $(".start").click(function() {
  * get the indecies of the clickd cell, craete the next game state, upadet the UI, and
  * advance the game to the new created state
  */
- $(".cell").each(function() {
-     var $this = $(this);
-     $this.click(function() {
-         if(globals.game.status === "running" && globals.game.currentState.turn === "X" && !$this.hasClass('occupied')) {
-             var indx = parseInt($this.data("indx"));
+$(".cell").each(function () {
+  var $this = $(this);
+  $this.click(function () {
+    if (globals.game.status === "running" && globals.game.currentState.turn === "X" && !$this.hasClass('occupied')) {
+      var indx = parseInt($this.data("indx"));
 
-             var next = new State(globals.game.currentState);
-             next.board[indx] = "X";
+      var next = new State(globals.game.currentState);
+      next.board[indx] = "X";
 
-             ui.insertAt(indx, "X");
+      ui.insertAt(indx, "X");
 
-             next.advanceTurn();
+      next.advanceTurn();
 
-             globals.game.advanceTo(next);
+      globals.game.advanceTo(next);
 
-         }
-     })
- });
+    }
+  })
+});
