@@ -10,8 +10,8 @@
   }
 
   /*
-   * switches the view on the UI depending on who's turn it switches
-   * @param turn [String]: the player to switch the view to
+   * switches the view on the UI depending on who's whoseTurn it switches
+   * @param whoseTurn [String]: the player to switch the view to
    */
   View.prototype.switchViewTo = function (turn) {
 

@@ -21,7 +21,7 @@
       'E', 'E', 'E',
     ];
 
-    this.currentState.turn = 'X'; // X plays first
+    this.currentState.whoseTurn = 'X'; // X plays first
 
     /*
      * initialize game status to beginning
@@ -35,7 +35,7 @@
     this.advanceTo = function (_state) {
       this.currentState = _state;
 
-      if (_state.isTerminal()) {
+      if (_state.checkForTerminalState()) {
         this.status = 'ended';
 
         if (_state.result === 'X-won') {
@@ -57,7 +57,7 @@
       else {
         // the game is still running
 
-        if (this.currentState.turn === 'X') {
+        if (this.currentState.whoseTurn === 'X') {
           this.controller.updateView('human');
           // view.switchViewTo('human');
         }
@@ -65,7 +65,7 @@
           this.controller.updateView('robot');
           // view.switchViewTo('robot');
 
-          // notify the AI player its turn has come up
+          // notify the AI player its whoseTurn has come up
           this.ai.notify('O');
         }
       }
@@ -92,10 +92,10 @@
   Game.prototype.score = function (_state) {
     if (_state.result === 'X-won') {
       // the x player won
-      return 10 - _state.oMovesCount;
+      return 10 - _state.numberOfComputerMoves;
     } else if (_state.result === 'O-won') {
       // the x player lost
-      return -10 + _state.oMovesCount;
+      return -10 + _state.numberOfComputerMoves;
     } else {
       // it's a draw
       return 0;

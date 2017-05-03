@@ -23,10 +23,10 @@
       const next = new window.ttt.State(state);
 
       // put the letter on the board
-      next.board[this.movePosition] = state.turn;
+      next.board[this.movePosition] = state.whoseTurn;
 
-      if (state.turn === 'O') {
-        next.oMovesCount += 1;
+      if (state.whoseTurn === 'O') {
+        next.numberOfComputerMoves += 1;
       }
 
       next.advanceTurn();

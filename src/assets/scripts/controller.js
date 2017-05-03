@@ -39,12 +39,12 @@
   };
 
   Controller.prototype.clickOnCell = function (cell) {
-    if (this.game.status === 'running' && this.game.currentState.turn === 'X') {
+    if (this.game.status === 'running' && this.game.currentState.whoseTurn === 'X') {
       const next = new window.ttt.State(this.game.currentState);
       const indx = parseInt(cell);
 
-      next.board[indx] = this.game.currentState.turn;
-      this.claimCell(indx, this.game.currentState.turn);
+      next.board[indx] = this.game.currentState.whoseTurn;
+      this.claimCell(indx, this.game.currentState.whoseTurn);
 
       next.advanceTurn();
       this.game.advanceTo(next);

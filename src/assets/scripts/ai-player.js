@@ -16,14 +16,14 @@
      * @returns [Number]: the minimax value of the state
      */
     const minimaxValue = (state) => {
-      if (state.isTerminal()) {
+      if (state.checkForTerminalState()) {
         // a terminal game state is the base case
         // return this.game.score(state);
         return this.currentGame.score(state);
       } else {
         let stateScore = 0; // this stores the minimax value we'll compute
 
-        if (state.turn === 'X') {
+        if (state.whoseTurn === 'X') {
           // X wants to maximize --> initialize to a value smaller than any possible score
           stateScore = -1000;
         } else {
@@ -31,7 +31,7 @@
           stateScore = 1000;
         }
 
-        const availablePositions = state.emptyCells();
+        const availablePositions = state.getFreePositions();
 
         // enumerate next available states using the info form available positions
         const availableNextStates = availablePositions.map((position) => {
@@ -47,7 +47,7 @@
         availableNextStates.forEach((nextState) => {
           const nextScore = minimaxValue(nextState);
 
-          if (state.turn === 'X') {
+          if (state.whoseTurn === 'X') {
             // X wants to maximize --> update stateScore iff nextScore is larger
             if (nextScore > stateScore) {
               stateScore = nextScore;
@@ -99,10 +99,10 @@
     /*
      * private function: make the ai player take a master move,
      * that is: choose the optimal minimax decision
-     * @param turn [String]: the player to play, either X or O
+     * @param whoseTurn [String]: the player to play, either X or O
      */
     const takeAMasterMove = (turn) => {
-      const available = this.currentGame.currentState.emptyCells();
+      const available = this.currentGame.currentState.getFreePositions();
 
       // enumerate and calculate the score for each available actions to the ai player
       const availableActions = available.map((position) => {
@@ -130,7 +130,7 @@
       const chosenAction = availableActions[0];
       const next = chosenAction.applyTo(this.currentGame.currentState);
 
-      // this.view.insertAt(chosenAction.movePosition, turn);
+      // this.view.insertAt(chosenAction.movePosition, whoseTurn);
       this.currentGame.controller.claimCell(chosenAction.movePosition, 'O');
 
       this.currentGame.advanceTo(next);
@@ -147,8 +147,8 @@
     };
 
     /*
-     * public function: notify the ai player that it's its turn
-     * @param turn [String]: the player to play, either X or O
+     * public function: notify the ai player that it's its whoseTurn
+     * @param whoseTurn [String]: the player to play, either X or O
      */
     this.notify = function (turn) {
       takeAMasterMove(turn);
