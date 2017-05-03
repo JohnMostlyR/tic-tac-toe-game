@@ -1,198 +1,107 @@
-/*
- * Represents a state in the game
- * @param old [State]: old state to intialize the new state
- */
-var State = function (old) {
+(function (window) {
+  'use strict';
 
   /*
-   * public : the player who has the turn to player
+   * Constructs a game object to be played
+   * @param autoPlayer [AIPlayer] : the AI player to be play the game with
    */
-  this.turn = '';
+  function Game(constroller) {
+    this.controller = constroller;
 
-  /*
-   * public : the number of moves of the AI player
-   */
-  this.oMovesCount = 0;
+    // public : initialize the ai player for this game
+    this.ai = new window.ttt.AIPlayer();
 
-  /*
-   * public : the result of the game in this State
-   */
-  this.result = "still running";
+    // public : initialize the game current state to empty board configuration
+    this.currentState = new window.ttt.State();
 
-  /*
-   * public : the board configuration in this state
-   */
-  this.board = [];
+    // "E" stands for empty board cell
+    this.currentState.board = [
+      'E', 'E', 'E',
+      'E', 'E', 'E',
+      'E', 'E', 'E',
+    ];
 
-  /* Begin Object Construction */
-  if (typeof old !== 'undefined') {
-    // if the state is constructed using a copy of another state
-    var len = old.board.length;
-    this.board = new Array(len);
-    for (var itr = 0; itr < len; itr++) {
-      this.board[itr] = old.board[itr];
-    }
+    this.currentState.turn = 'X'; // X plays first
 
-    this.oMovesCount = old.oMovesCount;
-    this.result = old.result;
-    this.turn = old.turn;
-  }
-  /* End Object Construction */
+    /*
+     * initialize game status to beginning
+     */
+    this.status = 'beginning';
 
-  /*
-   * public : advances the turn in a the state
-   */
-  this.advanceTurn = function () {
-    this.turn = this.turn === "X" ? "O" : "X";
-  }
+    /*
+     * public function that advances the game to a new state
+     * @param _state [State]: the new state to advance the game to
+     */
+    this.advanceTo = function (_state) {
+      this.currentState = _state;
 
-  /*
-   * public function that enumerates the empty cells in state
-   * @return [Array]: indices of all empty cells
-   */
-  this.emptyCells = function () {
-    var indxs = [];
-    for (var itr = 0; itr < 9; itr++) {
-      if (this.board[itr] === "E") {
-        indxs.push(itr);
-      }
-    }
-    return indxs;
-  }
+      if (_state.isTerminal()) {
+        this.status = 'ended';
 
-  /*
-   * public  function that checks if the state is a terminal state or not
-   * the state result is updated to reflect the result of the game
-   * @returns [Boolean]: true if it's terminal, false otherwise
-   */
-
-  this.isTerminal = function () {
-    var B = this.board;
-
-    //check rows
-    for (var i = 0; i <= 6; i = i + 3) {
-      if (B[i] !== "E" && B[i] === B[i + 1] && B[i + 1] == B[i + 2]) {
-        this.result = B[i] + "-won"; //update the state result
-        return true;
-      }
-    }
-
-    //check columns
-    for (var i = 0; i <= 2; i++) {
-      if (B[i] !== "E" && B[i] === B[i + 3] && B[i + 3] === B[i + 6]) {
-        this.result = B[i] + "-won"; //update the state result
-        return true;
-      }
-    }
-
-    //check diagonals
-    for (var i = 0, j = 4; i <= 2; i = i + 2, j = j - 2) {
-      if (B[i] !== "E" && B[i] == B[i + j] && B[i + j] === B[i + 2 * j]) {
-        this.result = B[i] + "-won"; //update the state result
-        return true;
-      }
-    }
-
-    var available = this.emptyCells();
-    if (available.length == 0) {
-      //the game is draw
-      this.result = "draw"; //update the state result
-      return true;
-    }
-    else {
-      return false;
-    }
-  };
-
-};
-
-/*
- * Constructs a game object to be played
- * @param autoPlayer [AIPlayer] : the AI player to be play the game with
- */
-var Game = function (autoPlayer) {
-
-  //public : initialize the ai player for this game
-  this.ai = autoPlayer;
-
-  // public : initialize the game current state to empty board configuration
-  this.currentState = new State();
-
-  //"E" stands for empty board cell
-  this.currentState.board = ["E", "E", "E",
-    "E", "E", "E",
-    "E", "E", "E"];
-
-  this.currentState.turn = "X"; //X plays first
-
-  /*
-   * initialize game status to beginning
-   */
-  this.status = "beginning";
-
-  /*
-   * public function that advances the game to a new state
-   * @param _state [State]: the new state to advance the game to
-   */
-  this.advanceTo = function (_state) {
-    this.currentState = _state;
-    if (_state.isTerminal()) {
-      this.status = "ended";
-
-      if (_state.result === "X-won")
-      //X won
-        view.switchViewTo("won");
-      else if (_state.result === "O-won")
-      //X lost
-        view.switchViewTo("lost");
-      else
-      //it's a draw
-        view.switchViewTo("draw");
-    }
-    else {
-      //the game is still running
-
-      if (this.currentState.turn === "X") {
-        view.switchViewTo("human");
+        if (_state.result === 'X-won') {
+          // X won
+          this.controller.updateView('won');
+          // view.switchViewTo('won');
+        }
+        else if (_state.result === 'O-won') {
+          // X lost
+          this.controller.updateView('lost');
+          // view.switchViewTo('lost');
+        }
+        else {
+          // it's a draw
+          this.controller.updateView('draw');
+          // view.switchViewTo('draw');
+        }
       }
       else {
-        view.switchViewTo("robot");
+        // the game is still running
 
-        //notify the AI player its turn has come up
-        this.ai.notify("O");
+        if (this.currentState.turn === 'X') {
+          this.controller.updateView('human');
+          // view.switchViewTo('human');
+        }
+        else {
+          this.controller.updateView('robot');
+          // view.switchViewTo('robot');
+
+          // notify the AI player its turn has come up
+          this.ai.notify('O');
+        }
       }
+    };
+
+    /*
+     * starts the game
+     */
+    this.start = function () {
+      if (this.status === 'beginning') {
+        this.ai.plays(this);
+        // invoke advanceTo with the initial state
+        this.advanceTo(this.currentState);
+        this.status = 'running';
+      }
+    };
+  }
+
+  /*
+   * public static function that calculates the score of the x player in a given terminal state
+   * @param _state [State]: the state in which the score is calculated
+   * @return [Number]: the score calculated for the human player
+   */
+  Game.prototype.score = function (_state) {
+    if (_state.result === 'X-won') {
+      // the x player won
+      return 10 - _state.oMovesCount;
+    } else if (_state.result === 'O-won') {
+      // the x player lost
+      return -10 + _state.oMovesCount;
+    } else {
+      // it's a draw
+      return 0;
     }
   };
 
-  /*
-   * starts the game
-   */
-  this.start = function () {
-    if (this.status = "beginning") {
-      //invoke advanceTo with the initial state
-      this.advanceTo(this.currentState);
-      this.status = "running";
-    }
-  }
-
-};
-
-/*
- * public static function that calculates the score of the x player in a given terminal state
- * @param _state [State]: the state in which the score is calculated
- * @return [Number]: the score calculated for the human player
- */
-Game.score = function (_state) {
-  if (_state.result === "X-won") {
-    // the x player won
-    return 10 - _state.oMovesCount;
-  }
-  else if (_state.result === "O-won") {
-    //the x player lost
-    return -10 + _state.oMovesCount;
-  }
-  else {
-    //it's a draw
-    return 0;
-  }
-}
+  window.ttt = window.ttt || {};
+  window.ttt.Game = Game;
+})(window);

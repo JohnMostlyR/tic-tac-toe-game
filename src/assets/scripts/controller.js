@@ -1,47 +1,60 @@
-/*
- * object to contain all items accessable to all control functions
- */
-var globals = {};
+(function (window) {
+  'use strict';
 
-/*
- * start game (onclick div.start) behavior and control
- * when start is clicked and a level is chosen, the game status changes to "running"
- * and UI view to swicthed to indicate that it's human's trun to play
- */
-const start = function () {
-  console.info('Starting');
-  const aiPlayer = new AI();
-  globals.game = new Game(aiPlayer);
+  function Controller(model, view) {
+    this.model = model;
+    this.view = view;
+    this.game = null;
 
-  aiPlayer.plays(globals.game);
+    this.view.subscribe('onClickStart', () => {
+      this.start();
+    });
 
-  globals.game.start();
-};
+    this.view.subscribe('onClickCell', (cell) => {
+      this.clickOnCell(cell);
+    });
 
-const clickOnCell = function (cell) {
-  if (globals.game.status === 'running' && globals.game.currentState.turn === 'X') {
-    const indx = parseInt(cell);
-    const next = new State(globals.game.currentState);
-
-    next.board[indx] = 'X';
-    view.insertAt(indx, 'X');
-
-    next.advanceTurn();
-    globals.game.advanceTo(next);
+    this.model.subscribe('status', (status) => {
+      //
+    });
   }
-};
 
-window.addEventListener('click', (ev) => {
-  if (ev.target) {
-    if (ev.target.id === 'js-start') {
-      start();
-    } else if (ev.target.classList.contains('cell')) {
-      if (ev.target.classList.contains('occupied')) {
-        return;
-      }
+  /*
+   * start game (onclick div.start) behavior and control
+   * when start is clicked and a level is chosen, the game status changes to "running"
+   * and UI view to switched to indicate that it's human's trun to play
+   */
+  Controller.prototype.start = function () {
+    console.info('Starting');
+    // const aiPlayer = new window.ttt.AIPlayer();
+    this.game = new window.ttt.Game(this);
 
-      ev.stopPropagation();
-      clickOnCell(ev.target.dataset.indx);
+    // aiPlayer.plays(this.game);
+
+    this.game.start();
+  };
+
+  Controller.prototype.claimCell = function (cell, turn) {
+    this.view.insertAt(cell, turn);
+  };
+
+  Controller.prototype.clickOnCell = function (cell) {
+    if (this.game.status === 'running' && this.game.currentState.turn === 'X') {
+      const next = new window.ttt.State(this.game.currentState);
+      const indx = parseInt(cell);
+
+      next.board[indx] = this.game.currentState.turn;
+      this.claimCell(indx, this.game.currentState.turn);
+
+      next.advanceTurn();
+      this.game.advanceTo(next);
     }
-  }
-});
+  };
+
+  Controller.prototype.updateView = function (show) {
+    this.view.switchViewTo(show);
+  };
+
+  window.ttt = window.ttt || {};
+  window.ttt.Controller = Controller;
+})(window);
