@@ -26,11 +26,7 @@
    */
   Controller.prototype.startNewGame = function () {
     console.info('Starting');
-    // const aiPlayer = new window.ttt.AIPlayer();
     this.game = new window.ttt.Game(this);
-
-    // aiPlayer.plays(this.game);
-
     this.game.startNewGame();
   };
 
@@ -41,10 +37,10 @@
   Controller.prototype.clickOnCell = function (cell) {
     if (this.game.status === 'running' && this.game.currentState.whoseTurn === 'X') {
       const next = new window.ttt.State(this.game.currentState);
-      const indx = parseInt(cell);
+      const idx = parseInt(cell);
 
-      next.board[indx] = this.game.currentState.whoseTurn;
-      this.claimCell(indx, this.game.currentState.whoseTurn);
+      next.board[idx] = this.game.currentState.whoseTurn;
+      this.claimCell(idx, this.game.currentState.whoseTurn);
 
       next.switchTurns();
       this.game.advanceTo(next);
