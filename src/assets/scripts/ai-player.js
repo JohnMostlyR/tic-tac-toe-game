@@ -6,7 +6,7 @@
 
     const determineBestMove = (state) => {
       if (state.checkForTerminalState()) {
-        return this.currentGame.score(state);
+        return this.currentGame.calculateScore(state);
       } else {
         let bestValue = 0;
 

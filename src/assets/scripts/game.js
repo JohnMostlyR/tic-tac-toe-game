@@ -1,82 +1,46 @@
 (function (window) {
   'use strict';
 
-  /*
-   * Constructs a game object to be played
-   * @param autoPlayer [AIPlayer] : the AI player to be play the game with
-   */
-  function Game(constroller) {
-    this.controller = constroller;
-
-    // public : initialize the ai player for this game
-    this.ai = new window.ttt.AIPlayer();
-
-    // public : initialize the game current state to empty board configuration
+  function Game(controller) {
+    this.controller = controller;
     this.currentState = new window.ttt.State();
-
-    // "E" stands for empty board cell
     this.currentState.board = [
       'E', 'E', 'E',
       'E', 'E', 'E',
       'E', 'E', 'E',
     ];
-
-    this.currentState.whoseTurn = 'X'; // X plays first
-
-    /*
-     * initialize game status to beginning
-     */
+    this.currentState.whoseTurn = 'X';
+    this.aiPlayer = new window.ttt.AIPlayer();
     this.status = 'beginning';
 
-    /*
-     * public function that advances the game to a new state
-     * @param _state [State]: the new state to advance the game to
-     */
-    this.advanceTo = function (_state) {
-      this.currentState = _state;
+    this.advanceTo = function (newState) {
+      this.currentState = newState;
 
-      if (_state.checkForTerminalState()) {
+      if (newState.checkForTerminalState()) {
         this.status = 'ended';
 
-        if (_state.result === 'X-won') {
-          // X won
+        if (newState.result === 'X-won') {
           this.controller.updateView('won');
-          // view.switchViewTo('won');
-        }
-        else if (_state.result === 'O-won') {
-          // X lost
+        } else if (newState.result === 'O-won') {
           this.controller.updateView('lost');
-          // view.switchViewTo('lost');
-        }
-        else {
-          // it's a draw
+        } else {
           this.controller.updateView('draw');
-          // view.switchViewTo('draw');
         }
-      }
-      else {
-        // the game is still running
-
+      } else {
         if (this.currentState.whoseTurn === 'X') {
           this.controller.updateView('human');
-          // view.switchViewTo('human');
-        }
-        else {
+        } else {
           this.controller.updateView('robot');
-          // view.switchViewTo('robot');
 
-          // notify the AI player its whoseTurn has come up
-          this.ai.notify('O');
+          // notify the AI player its turn has come up
+          this.aiPlayer.notify('O');
         }
       }
     };
 
-    /*
-     * starts the game
-     */
-    this.start = function () {
+    this.startNewGame = function () {
       if (this.status === 'beginning') {
-        this.ai.setGame(this);
+        this.aiPlayer.setGame(this);
         // invoke advanceTo with the initial state
         this.advanceTo(this.currentState);
         this.status = 'running';
@@ -84,22 +48,14 @@
     };
   }
 
-  /*
-   * public static function that calculates the score of the x player in a given terminal state
-   * @param _state [State]: the state in which the score is calculated
-   * @return [Number]: the score calculated for the human player
-   */
-  Game.prototype.score = function (_state) {
-    if (_state.result === 'X-won') {
-      // the x player won
-      return 10 - _state.numberOfComputerMoves;
-    } else if (_state.result === 'O-won') {
-      // the x player lost
-      return -10 + _state.numberOfComputerMoves;
-    } else {
-      // it's a draw
-      return 0;
+  Game.prototype.calculateScore = function (finalState) {
+    if (finalState.result === 'X-won') {
+      return 10 - finalState.numberOfComputerMoves;
+    } else if (finalState.result === 'O-won') {
+      return -10 + finalState.numberOfComputerMoves;
     }
+
+    return 0;
   };
 
   window.ttt = window.ttt || {};

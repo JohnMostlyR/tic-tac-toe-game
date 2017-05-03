@@ -7,7 +7,7 @@
     this.game = null;
 
     this.view.subscribe('onClickStart', () => {
-      this.start();
+      this.startNewGame();
     });
 
     this.view.subscribe('onClickCell', (cell) => {
@@ -24,14 +24,14 @@
    * when start is clicked and a level is chosen, the game status changes to "running"
    * and UI view to switched to indicate that it's human's trun to play
    */
-  Controller.prototype.start = function () {
+  Controller.prototype.startNewGame = function () {
     console.info('Starting');
     // const aiPlayer = new window.ttt.AIPlayer();
     this.game = new window.ttt.Game(this);
 
     // aiPlayer.plays(this.game);
 
-    this.game.start();
+    this.game.startNewGame();
   };
 
   Controller.prototype.claimCell = function (cell, turn) {
