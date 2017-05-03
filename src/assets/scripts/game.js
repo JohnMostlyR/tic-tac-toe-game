@@ -76,7 +76,7 @@
      */
     this.start = function () {
       if (this.status === 'beginning') {
-        this.ai.plays(this);
+        this.ai.setGame(this);
         // invoke advanceTo with the initial state
         this.advanceTo(this.currentState);
         this.status = 'running';

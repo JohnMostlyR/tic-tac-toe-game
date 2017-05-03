@@ -46,7 +46,7 @@
       next.board[indx] = this.game.currentState.whoseTurn;
       this.claimCell(indx, this.game.currentState.whoseTurn);
 
-      next.advanceTurn();
+      next.switchTurns();
       this.game.advanceTo(next);
     }
   };

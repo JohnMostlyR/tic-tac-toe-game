@@ -15,7 +15,7 @@
     }
   }
 
-  State.prototype.advanceTurn = function () {
+  State.prototype.switchTurns = function () {
     this.whoseTurn = this.whoseTurn === 'X' ? 'O' : 'X';
   };
 
