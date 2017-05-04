@@ -40,9 +40,9 @@
    * @param j [Number] : column number (0-indexed)
    * @param symbol [String]: X or O
    */
-  View.prototype.insertAt = function (indx, symbol) {
+  View.prototype.insertAt = function (idx, symbol) {
     const board = document.querySelectorAll('.cell');
-    const targetCell = board[indx];
+    const targetCell = board[idx];
 
     if (!targetCell.classList.contains('occupied')) {
       targetCell.innerHTML = symbol;
