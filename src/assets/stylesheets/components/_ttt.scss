@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Finger+Paint');
+
+.c-body {
+  background-color: $page-background-color;
+  color: #fff;
+}
+
+.c-main {
+  //align-items: center;
+  display: flex;
+  height: 100vmin;
+  justify-content: center;
+}
+
+.l-row {
+  display: flex;
+  width: 100%;
+}
+
+.l-col {
+  display: flex;
+  flex: 1 1 100%;
+  flex-flow: column;
+  height: 100%;
+}
+
+.l-col--half {
+  flex: 1 1 50%;
+}
+
+.c-ttt {
+  position: relative;
+  text-align: center;
+  animation: brighten 4s infinite;
+  opacity: 0.90;
+}
+
+.s-disabled {
+  display: none;
+}

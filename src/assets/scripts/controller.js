@@ -31,16 +31,16 @@
   };
 
   Controller.prototype.claimCell = function (cell, turn) {
-    this.view.insertAt(cell, turn);
+    console.info(`Claim cell: ${cell} for player: ${turn}`);
+    this.view.claimCell(cell, turn);
   };
 
   Controller.prototype.clickOnCell = function (cell) {
-    if (this.game.status === 'running' && this.game.currentState.whoseTurn === 'X') {
+    if (this.game && this.game.status === 'running' && this.game.currentState.whoseTurn === 'X') {
       const next = new window.ttt.State(this.game.currentState);
-      const idx = parseInt(cell);
 
-      next.board[idx] = this.game.currentState.whoseTurn;
-      this.claimCell(idx, this.game.currentState.whoseTurn);
+      next.board[cell] = this.game.currentState.whoseTurn;
+      this.claimCell(cell, this.game.currentState.whoseTurn);
 
       next.switchTurns();
       this.game.advanceTo(next);
@@ -48,6 +48,7 @@
   };
 
   Controller.prototype.updateView = function (show) {
+    console.info(`Update view to show: ${show}`);
     this.view.switchViewTo(show);
   };
 

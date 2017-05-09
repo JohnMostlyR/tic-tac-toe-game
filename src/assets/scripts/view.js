@@ -9,10 +9,6 @@
     this.currentView = '';
   }
 
-  /*
-   * switches the view on the UI depending on who's whoseTurn it switches
-   * @param whoseTurn [String]: the player to switch the view to
-   */
   View.prototype.switchViewTo = function (turn) {
 
     // helper function for async calling
@@ -34,21 +30,10 @@
     }
   };
 
-  /*
-   * places X or O in the specified place in the board
-   * @param i [Number] : row number (0-indexed)
-   * @param j [Number] : column number (0-indexed)
-   * @param symbol [String]: X or O
-   */
-  View.prototype.insertAt = function (idx, symbol) {
-    const board = document.querySelectorAll('.cell');
-    const targetCell = board[idx];
-
-    if (!targetCell.classList.contains('occupied')) {
-      targetCell.innerHTML = symbol;
-      targetCell.style.color = (symbol === 'X') ? 'green' : 'red';
-      targetCell.classList.add('occupied');
-    }
+  View.prototype.claimCell = function (idx, avatar) {
+    const targetCell = document.getElementById(`js-ttt-btn-${idx}`);
+    targetCell.innerHTML = avatar;
+    targetCell.setAttribute('disabled', 'disabled');
   };
 
   View.prototype.subscribe = function (event, subscriber) {
@@ -56,7 +41,7 @@
       case 'onClickStart':
         window.addEventListener('click', (ev) => {
           if (ev.target) {
-            if (ev.target.id === 'js-start') {
+            if (ev.target.id === 'js-ttt-start') {
               subscriber();
             }
           }
@@ -64,14 +49,10 @@
         break;
       case 'onClickCell':
         window.addEventListener('click', (ev) => {
-          if (ev.target) {
-            if (ev.target.classList.contains('cell')) {
-              if (ev.target.classList.contains('occupied')) {
-                return;
-              }
-
+          if (ev.target && ev.target.id) {
+            if (ev.target.id.toLowerCase().substr(0, 11) === 'js-ttt-btn-') {
               ev.stopPropagation();
-              subscriber(ev.target.dataset.indx);
+              subscriber(parseInt(ev.target.id.substr(11)));
             }
           }
         });

@@ -1,0 +1,35 @@
+.c-banner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 6vmin;
+  padding: 1vmin 2.5vmin;
+  position: relative;
+  background-color: #e11f27;
+  border: 2px solid #D4AF37;
+  color: #D4AF37;
+  box-shadow: inset 0 0 100px #e11f27 - 150, 0 0 0 7px #e11f27 - 100;
+  font-size: 4vmin;
+  text-shadow: 1px 0 0 #ffeeb5;
+
+  &:before {
+    content: '';
+    height: 6vmin;
+    position: absolute;
+    top: -3.4vmin;
+    transform: rotate(45deg);
+    width: 6vmin;
+    z-index: -1;
+    border: 2px solid #e11f27 - 50;
+    border-radius: 5px;
+  }
+}
+
+.l-banner {
+  margin-right: 9vmin;
+}
+
+.l-banner-ornament {
+  position: absolute;
+  bottom: 0;
+}

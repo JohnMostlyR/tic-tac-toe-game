@@ -1,0 +1,77 @@
+$rhombus-banner-height: 200px;
+$rhombus-banner-width: $rhombus-banner-height;
+
+.c-rhombus-banner {
+  height: $rhombus-banner-height;
+  position: relative;
+  transform: rotate(45deg);
+  width: $rhombus-banner-width;
+  background-image: linear-gradient(45deg, #ae8913 50%, #ffeeb5 - 50);
+
+  &:after {
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(0.9);
+    background-color: #e11f27;
+    background-image: linear-gradient(to right, #e11f27 - 100, #e11f27);
+  }
+}
+
+.l-rhombus__content {
+  height: $rhombus-banner-height;
+  position: absolute;
+  width: $rhombus-banner-width;
+  z-index: +2;
+}
+
+.c-rhombus__content {
+  height: 100%;
+  position: relative;
+}
+
+.c-rhombus-banner__text {
+  height: 100%;
+  color: #D4AF37;
+  width: 100%;
+  font-size: 21px;
+  text-shadow: 1px 0 0 #ffeeb5;
+}
+
+.c-rhombus-banner__text--left {
+  position: absolute;
+  transform: rotate(-45deg);
+  text-align: center;
+  padding-top: 12px;
+}
+
+.c-rhombus-banner__text--right {
+  position: absolute;
+  transform: rotate(45deg);
+  text-align: center;
+  padding-top: 12px;
+}
+
+.c-rhombus-banner__text--center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-24px); // Half font size
+  font-size: 52px;
+}
+
+.l-rhombus-banner {
+  margin-bottom: 20px;
+  position: relative;
+  transform: scale(.4);
+}
+
+.l-rhombus-banner--left {
+  align-self: flex-start;
+}
+
+.l-rhombus-banner--right {
+  align-self: flex-end;
+}

@@ -1,0 +1,69 @@
+//<div class="l-banner-ornament">
+//  <div class="c-ornament">
+//    <div class="c-ornament__string"></div>
+//    <div class="c-ornament__knot"></div>
+//    <div class="c-ornament__bobbin"></div>
+//  </div>
+//</div>
+
+$ornament-height: 200px;
+$ornament-width: 16px;
+
+.c-ornament {
+  height: $ornament-height;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: $ornament-width;
+  z-index: -1;
+
+  &__knot {
+    height: $ornament-width;
+    position: relative;
+    background-color: #ffeeb5;
+    background-image: linear-gradient(to right, #ae8913, #ffeeb5);
+    border-radius: 2px;
+
+    &:after,
+    &:before {
+      content: '';
+      height: 4px;
+      transform: translateX(-50%);
+      position: absolute;
+      background-color: #e11f27 - 34;
+      width: 80%;
+    }
+
+    &:before {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      top: -4px;
+    }
+
+    &:after {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      bottom: -4px;
+    }
+  }
+
+  &__bobbin {
+    height: $ornament-height * 0.667;
+    width: $ornament-width - 2px;
+    background-color: #e11f27 - 34;
+    background-image: repeating-linear-gradient(to right, #e11f27 - 34, $page-background-color 2%);
+  }
+
+  &__string {
+    height: $ornament-height * 0.334;
+    left: 50%;
+    margin: 0 auto;
+    width: 2px;
+    background-color: #e11f27 - 50;
+  }
+}
+
+.l-ornament {
+  bottom: 0;
+  position: absolute;
+}

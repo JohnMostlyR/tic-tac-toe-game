@@ -1,0 +1,32 @@
+.c-whose-turn {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  height: 150px;
+  justify-content: center;
+  width: 150px;
+  background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 806.2 791.6" enable-background="new 0 0 806.2 791.6"><filter id="c"><feComponentTransfer><feFuncA type="table" tableValues="0 0.5 1 1"/></feComponentTransfer></filter><defs><path id="a" d="M388.1 723l394.1-327.4L386.7 0 25.9 360.8"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><g clip-path="url(#b)" filter="url(#c)"><path fill="#7d0000" d="M270.9 223.9l-33.9 47 151 452-117.1-499z"/><path fill="#e11f27" d="M410.6 246.9L365 210.7l-.5.5L388.1 723l22.5-476.1z"/><path fill="#7d0000" d="M364.5 211.2l-41.9 40L388.1 723l-23.6-511.8z"/><path fill="#e11f27" d="M156.6 307.2l-57.9-7.1L388.1 723 156.6 307.2z"/><path fill="#7d0000" d="M181.6 254l-24.9 53.2L388.1 723 181.6 254z"/><path fill="#e11f27" d="M237.1 270.9L181.6 254l206.5 469-151-452.1z"/><path fill="#7d0000" d="M715.4 328.8l-57.9 1.4-.5-.5L388.1 723l327.3-394.2z"/><path fill="#e11f27" d="M322.7 251.2L271 223.9 388.1 723l-65.4-471.8z"/><path fill="#7d0000" d="M459.1 215.4l-48.4 31.5-22.6 476 71-507.5z"/><path fill="#e11f27" d="M580.4 286.9L551.2 237 388.1 723l192.3-436.1z"/><path fill="#7d0000" d="M637.4 275.2L581 287.4l-.5-.5L388.1 723l249.3-447.8z"/><path fill="#e11f27" d="M657.1 329.7l-19.3-55-.5.5L388.1 723l269-393.3z"/><path fill="#7d0000" d="M551.3 237.1l-54.1 22.1L388.1 723l163.2-485.9z"/><path fill="#e11f27" d="M725.3 385.7l-9.4-57.4-.5.5L388.1 723l337.2-337.3z"/><path fill="#7d0000" d="M98.8 300.1l-15.1 56.4L388.1 723 98.8 300.1z"/><path fill="#e11f27" d="M497.2 259.2l-38.1-43.7-71 507.5 109.1-463.8z"/><path fill="#7d0000" d="M725.3 385.7L388.1 723l394.2-327.4-57.4-9.4.4-.5z"/><path fill="#e11f27" d="M83.7 356.5l-57.9 4.2L388.1 723 83.7 356.5z"/></g><path fill="#D4AF37" d="M20.2 342.9L0 364.1l437.9 427.6 19.8-20.7L20.2 342.9z"/><path fill="#D4AF37" d="M806.2 397l-18.8-22.6-471.8 390 18.3 22.1L806.2 397z"/></svg>');
+  background-repeat: no-repeat;
+  color: #ffeeb5;
+  font-size: 12px;
+  text-shadow: 1px 0 0 #D4AF37;
+}
+
+.c-whose-turn__p {
+  margin: 0;
+
+  &:not(:first-child) {
+    margin-top: 12px;
+  }
+}
+
+.l-whose-turn {
+}
+
+.l-whose-turn--left {
+  align-self: flex-start;
+}
+
+.l-whose-turn--right {
+  align-self: flex-end;
+}
