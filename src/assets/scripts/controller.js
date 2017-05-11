@@ -58,6 +58,7 @@
    */
   Controller.prototype.startNewGame = function () {
     console.info('Starting');
+    this.view.clearBoard();
     this.view.showGameStage();
     this.game = new window.ttt.Game(this);
     this.game.startNewGame();
@@ -118,6 +119,12 @@
 
 
     this.view.showResult(resultString, winningPositions);
+
+    // Start a new game after a timeout
+    const timeToWait = 5000;
+    const timeOutId = window.setTimeout(() => {
+      this.startNewGame();
+    }, timeToWait);
   };
 
   window.ttt = window.ttt || {};

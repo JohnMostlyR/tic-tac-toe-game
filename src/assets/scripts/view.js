@@ -20,18 +20,23 @@
 
   View.prototype.showSetupStage = function () {
     this.gameSetupStage = true;
+
+    // Show the form for adding preferences.
     this.form.style.opacity = 1;
     this.form.style.removeProperty('width');
 
+    // Move the scroll up a bit as there would be a huge space where the scores and the indicator of whose turn it is
+    // would otherwise be.
     const scrollNode = document.querySelector('.l-scroll');
     scrollNode.style.marginTop = '-10vmin';
 
+    // Hide the score board, the indicator of whose turn it is and the game board.
     ['l-rhombus-banner', 'l-whose-turn', 'l-board'].forEach((cssClass) => {
       const nodeList = document.querySelectorAll(`.${cssClass}`);
       [...nodeList].forEach((node) => {
-        // node.classList.add('s-hidden');
         node.style.opacity = 0;
 
+        // The game board needs to make room for the preference form.
         if (cssClass === 'l-board') {
           node.style.width = 0;
         }
@@ -41,25 +46,37 @@
 
   View.prototype.showGameStage = function () {
     this.gameSetupStage = false;
+
+    // Show the form for adding preferences.
     this.form.style.opacity = 0;
+
+    // Make room for the game board.
     this.form.style.width = 0;
 
+    // Show scores for human player two or computer depending on the game type, which can be one player or two players.
     const gameType = this.model.getProperty('gameType');
 
     if (gameType === 2) {
+
+      // Two players game.
       document.getElementById('js-ttt-show-score-computer').style.display = 'none';
     } else {
+
+      // One against computer
       document.getElementById('js-ttt-show-score-human').style.display = 'none';
     }
 
+    // Move the scroll down to its normal position.
     const scrollNode = document.querySelector('.l-scroll');
     scrollNode.style.removeProperty('margin-top');
 
+    // Show the score board and the game board.
     ['l-rhombus-banner', 'l-board'].forEach((cssClass) => {
       const nodeList = document.querySelectorAll(`.${cssClass}`);
       [...nodeList].forEach((node) => {
         node.style.removeProperty('opacity');
 
+        // Set the game board back to its original size.
         if (cssClass === 'l-board') {
           node.style.removeProperty('width');
         }
@@ -68,19 +85,40 @@
   };
 
   View.prototype.showResult = function (result, positions) {
-    positions.forEach((position) => {
-      const buttonNode = document.getElementById(position);
-      buttonNode.style.color = '#e11f27';
-    });
 
+    // highlight the winning positions
+    if (positions && Array.isArray(positions)) {
+      positions.forEach((position) => {
+        const buttonNode = document.getElementById(position);
+        buttonNode.style.color = '#e11f27';
+      });
+    }
+
+    // add result text
     const resultNode = document.getElementById('js-ttt-result');
     resultNode.innerHTML = result;
 
+    // show the result
     const resultBanner = document.getElementById('js-ttt-end-result');
     resultBanner.style.display = 'inherit';
 
+    // update the score boards
     document.getElementById('js-ttt-show-player-one-score').innerHTML = this.model.getProperty('playerOneScore');
     document.getElementById('js-ttt-show-player-two-score').innerHTML = this.model.getProperty('playerTwoScore');
+  };
+
+  View.prototype.clearBoard = function () {
+
+    // Remove the result banner from view
+    const resultBanner = document.getElementById('js-ttt-end-result');
+    resultBanner.style.display = 'none';
+
+    const buttonNodes = document.querySelectorAll('.c-board__btn');
+    [...buttonNodes].forEach((buttonNode) => {
+      buttonNode.style.removeProperty('color');
+      buttonNode.removeAttribute('disabled');
+      buttonNode.innerHTML = buttonNode.id.substr(11);
+    });
   };
 
   View.prototype.switchViewTo = function (turn) {

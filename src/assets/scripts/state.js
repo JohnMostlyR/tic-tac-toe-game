@@ -81,6 +81,7 @@
     if (freePositions.length === 0) {
       this.result = {
         winner: 'draw',
+        positions: [],
       };
 
       return true;
