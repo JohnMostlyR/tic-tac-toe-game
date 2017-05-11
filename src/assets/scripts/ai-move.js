@@ -11,7 +11,7 @@
       // put the letter on the board
       nextState.board[this.movePosition] = state.whoseTurn;
 
-      if (state.whoseTurn === 'O') {
+      if (state.whoseTurn === 'player-two') {
         nextState.numberOfComputerMoves += 1;
       }
 

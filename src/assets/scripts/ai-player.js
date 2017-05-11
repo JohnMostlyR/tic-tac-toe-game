@@ -10,7 +10,7 @@
       } else {
         let bestValue = 0;
 
-        if (state.whoseTurn === 'X') {
+        if (state.whoseTurn === 'player-one') {
           bestValue = Number.NEGATIVE_INFINITY;
         } else {
           bestValue = Number.POSITIVE_INFINITY;
@@ -28,7 +28,7 @@
         possibleNextMoves.forEach((possibleMove) => {
           const newValue = determineBestMove(possibleMove);
 
-          if (state.whoseTurn === 'X') {
+          if (state.whoseTurn === 'player-one') {
             if (newValue > bestValue) {
               bestValue = newValue;
             }
@@ -74,7 +74,7 @@
         return newPossibleMove;
       });
 
-      if (whoseTurn === 'X') {
+      if (whoseTurn === 'player-one') {
         possibleMoves.sort(sortDescending);
       } else {
         possibleMoves.sort(sortAscending);
@@ -84,7 +84,7 @@
       const chosenAction = possibleMoves[0];
       const nextState = chosenAction.addState(this.currentGame.currentState);
 
-      this.currentGame.controller.claimCell(chosenAction.movePosition, 'O');
+      this.currentGame.controller.claimCell(chosenAction.movePosition, 'player-two');
 
       this.currentGame.advanceTo(nextState);
     };

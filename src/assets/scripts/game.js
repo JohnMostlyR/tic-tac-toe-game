@@ -10,7 +10,7 @@
       'E', 'E', 'E',
       'E', 'E', 'E',
     ];
-    this.currentState.whoseTurn = 'X';
+    this.currentState.whoseTurn = 'player-one';
 
     if (this.isOnePlayer) {
       this.aiPlayer = new window.ttt.AIPlayer();
@@ -24,22 +24,22 @@
       if (newState.checkForTerminalState()) {
         this.status = 'ended';
 
-        if (newState.result === 'X-won') {
+        if (newState.result === 'player-one-won') {
           this.controller.updateView('won');
-        } else if (newState.result === 'O-won') {
+        } else if (newState.result === 'player-two-won') {
           this.controller.updateView('lost');
         } else {
           this.controller.updateView('draw');
         }
       } else {
-        if (this.currentState.whoseTurn === 'X') {
+        if (this.currentState.whoseTurn === 'player-one') {
           this.controller.updateView('player-one-goes');
         } else {
           this.controller.updateView('player-two-goes');
 
           if (this.aiPlayer) {
             // notify the AI player its turn has come up
-            this.aiPlayer.notify('O');
+            this.aiPlayer.notify('player-two');
           }
         }
       }
@@ -51,7 +51,7 @@
         if (this.aiPlayer) {
           this.aiPlayer.setGame(this);
         }
-        
+
         // invoke advanceTo with the initial state
         this.advanceTo(this.currentState);
         this.status = 'running';
@@ -60,9 +60,9 @@
   }
 
   Game.prototype.calculateScore = function (finalState) {
-    if (finalState.result === 'X-won') {
+    if (finalState.result === 'player-one-won') {
       return 10 - finalState.numberOfComputerMoves;
-    } else if (finalState.result === 'O-won') {
+    } else if (finalState.result === 'player-two-won') {
       return -10 + finalState.numberOfComputerMoves;
     }
 

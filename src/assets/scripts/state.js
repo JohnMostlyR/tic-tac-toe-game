@@ -16,7 +16,7 @@
   }
 
   State.prototype.switchTurns = function () {
-    this.whoseTurn = this.whoseTurn === 'X' ? 'O' : 'X';
+    this.whoseTurn = this.whoseTurn === 'player-one' ? 'player-two' : 'player-one';
   };
 
   State.prototype.getFreePositions = function () {

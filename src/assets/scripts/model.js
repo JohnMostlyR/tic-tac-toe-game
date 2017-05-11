@@ -14,13 +14,13 @@
 
     this.whoseTurn = {
       value: '',
-      validValues: ['X', 'O'],
+      validValues: ['player-one', 'player-two'],
       subscribers: [],
     };
 
     this.result = {
       value: '',
-      validValues: ['X-won', 'O-won'],
+      validValues: ['player-one-won', 'player-two-won'],
       subscribers: [],
     };
 

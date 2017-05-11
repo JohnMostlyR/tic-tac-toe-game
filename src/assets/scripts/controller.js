@@ -63,20 +63,29 @@
     this.game.startNewGame();
   };
 
-  Controller.prototype.claimCell = function (cell, turn) {
-    console.info(`Claim cell: ${cell} for player: ${turn}`);
-    this.view.claimCell(cell, turn);
+  Controller.prototype.claimCell = function (cell, whoseTurn) {
+    console.info(`Claim cell: ${cell} for player: ${whoseTurn}`);
+
+    const avatar = (whoseTurn === 'player-one')
+      ?
+      this.model.getProperty('playerOneAvatar')
+      :
+      this.model.getProperty('playerTwoAvatar');
+
+    this.view.claimCell(cell, avatar);
   };
 
   Controller.prototype.clickOnCell = function (cell) {
-    if (this.game && this.game.status === 'running' && this.game.currentState.whoseTurn === 'X') {
-      const next = new window.ttt.State(this.game.currentState);
+    if (this.game && this.game.status === 'running') {
+      if (this.game.currentState.whoseTurn === 'player-one' || this.model.getProperty('gameType') === 2) {
+        const next = new window.ttt.State(this.game.currentState);
 
-      next.board[cell] = this.game.currentState.whoseTurn;
-      this.claimCell(cell, this.game.currentState.whoseTurn);
+        next.board[cell] = this.game.currentState.whoseTurn;
+        this.claimCell(cell, this.game.currentState.whoseTurn);
 
-      next.switchTurns();
-      this.game.advanceTo(next);
+        next.switchTurns();
+        this.game.advanceTo(next);
+      }
     }
   };
 
