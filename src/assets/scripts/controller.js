@@ -94,6 +94,20 @@
     this.view.updateView(show);
   };
 
+  Controller.prototype.showResult = function (result) {
+    let resultString = '';
+
+    if (result === 'player-one-won') {
+      resultString = 'Player One Wins!';
+    } else if (result === 'player-two-won') {
+      resultString = (this.model.getProperty('gameType') === 2) ? 'Sorry, Computer Wins' : 'Player Two Wins!';
+    } else if (result === 'draw') {
+      resultString = 'It\'s a Draw';
+    }
+
+    this.view.showResult(resultString);
+  };
+
   window.ttt = window.ttt || {};
   window.ttt.Controller = Controller;
 })(window);

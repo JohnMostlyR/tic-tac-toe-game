@@ -1,0 +1,34 @@
+.c-end-result {
+  position: relative;
+  padding: 2vmin 8vmin;
+  width: 100%;
+  background-color: rgb(212, 175, 55);
+  background-image: linear-gradient(145deg, transparent, rgba(255, 238, 181, 1));
+  background-size: 200%;
+  border: 2px solid #e11f27 - 50;
+  color: #333;
+  font-family: 'Finger Paint', cursive;
+  font-size: xx-large;
+
+  &:after {
+    bottom: -10px;
+    left: -10px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: -1;
+    content: '';
+    background-color: rgb(212, 175, 55);
+    background-image: linear-gradient(145deg, transparent, rgba(255, 238, 181, 1));
+    background-size: 200%;
+  }
+}
+
+.l-end-result {
+  align-self: center;
+  display: none;
+  position: absolute;
+  width: 100%;
+  z-index: +1;
+  box-shadow: -15px -16px 60px 6px rgba(98, 33, 27, 1);
+}

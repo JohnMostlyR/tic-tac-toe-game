@@ -25,11 +25,11 @@
         this.status = 'ended';
 
         if (newState.result === 'player-one-won') {
-          this.controller.updateView('won');
+          this.controller.showResult('player-one-won');
         } else if (newState.result === 'player-two-won') {
-          this.controller.updateView('lost');
+          this.controller.showResult('player-two-won');
         } else {
-          this.controller.updateView('draw');
+          this.controller.showResult('draw');
         }
       } else {
         if (this.currentState.whoseTurn === 'player-one') {

@@ -58,6 +58,14 @@
     });
   };
 
+  View.prototype.showResult = function (result) {
+    const resultNode = document.getElementById('js-ttt-result');
+    resultNode.innerHTML = result;
+
+    const resultBanner = document.getElementById('js-ttt-end-result');
+    resultBanner.style.display = 'inherit';
+  };
+
   View.prototype.switchViewTo = function (turn) {
 
     // helper function for async calling
