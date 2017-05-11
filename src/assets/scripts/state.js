@@ -35,7 +35,11 @@
         BOARD[i] === BOARD[i + 1] &&
         BOARD[i + 1] === BOARD[i + 2]
       ) {
-        this.result = `${BOARD[i]}-won`;
+        this.result = {
+          winner: `${BOARD[i]}-won`,
+          positions: [i, i + 1, i + 2],
+        };
+
         return true;
       }
     }
@@ -47,7 +51,11 @@
         BOARD[i] === BOARD[i + 3] &&
         BOARD[i + 3] === BOARD[i + 6]
       ) {
-        this.result = `${BOARD[i]}-won`;
+        this.result = {
+          winner: `${BOARD[i]}-won`,
+          positions: [i, i + 3, i + 6],
+        };
+
         return true;
       }
     }
@@ -59,7 +67,11 @@
         BOARD[i] === BOARD[i + j] &&
         BOARD[i + j] === BOARD[i + (2 * j)]
       ) {
-        this.result = `${BOARD[i]}-won`;
+        this.result = {
+          winner: `${BOARD[i]}-won`,
+          positions: [i, i + j, i + (2 * j)],
+        };
+
         return true;
       }
     }
@@ -67,7 +79,10 @@
     const freePositions = this.getFreePositions();
 
     if (freePositions.length === 0) {
-      this.result = 'draw';
+      this.result = {
+        winner: 'draw',
+      };
+
       return true;
     }
 

@@ -3,7 +3,8 @@
 
   const document = window.document;
 
-  function View() {
+  function View(model) {
+    this.model = model;
     this.form = document.getElementById('js-ttt-preferences-form');
 
     // holds the state of the initial controls visibility
@@ -43,6 +44,14 @@
     this.form.style.opacity = 0;
     this.form.style.width = 0;
 
+    const gameType = this.model.getProperty('gameType');
+
+    if (gameType === 2) {
+      document.getElementById('js-ttt-show-score-computer').style.display = 'none';
+    } else {
+      document.getElementById('js-ttt-show-score-human').style.display = 'none';
+    }
+
     const scrollNode = document.querySelector('.l-scroll');
     scrollNode.style.removeProperty('margin-top');
 
@@ -58,12 +67,20 @@
     });
   };
 
-  View.prototype.showResult = function (result) {
+  View.prototype.showResult = function (result, positions) {
+    positions.forEach((position) => {
+      const buttonNode = document.getElementById(position);
+      buttonNode.style.color = '#e11f27';
+    });
+
     const resultNode = document.getElementById('js-ttt-result');
     resultNode.innerHTML = result;
 
     const resultBanner = document.getElementById('js-ttt-end-result');
     resultBanner.style.display = 'inherit';
+
+    document.getElementById('js-ttt-show-player-one-score').innerHTML = this.model.getProperty('playerOneScore');
+    document.getElementById('js-ttt-show-player-two-score').innerHTML = this.model.getProperty('playerTwoScore');
   };
 
   View.prototype.switchViewTo = function (turn) {

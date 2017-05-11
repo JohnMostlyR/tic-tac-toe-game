@@ -95,17 +95,29 @@
   };
 
   Controller.prototype.showResult = function (result) {
-    let resultString = '';
+    const winningPositions = result.positions.map((position) => {
+      return `js-ttt-btn-${position}`;
+    });
 
-    if (result === 'player-one-won') {
+    let resultString = '';
+    const scores = {};
+
+    if (result.winner === 'player-one-won') {
+      let oldScore = this.model.getProperty('playerOneScore');
+      this.model.setProperty('playerOneScore', oldScore += 1);
+
       resultString = 'Player One Wins!';
-    } else if (result === 'player-two-won') {
+    } else if (result.winner === 'player-two-won') {
+      let oldScore = this.model.getProperty('playerTwoScore');
+      this.model.setProperty('playerTwoScore', oldScore += 1);
+
       resultString = (this.model.getProperty('gameType') === 2) ? 'Sorry, Computer Wins' : 'Player Two Wins!';
-    } else if (result === 'draw') {
+    } else {
       resultString = 'It\'s a Draw';
     }
 
-    this.view.showResult(resultString);
+
+    this.view.showResult(resultString, winningPositions);
   };
 
   window.ttt = window.ttt || {};

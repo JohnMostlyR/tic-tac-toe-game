@@ -44,6 +44,20 @@
       validValues: ['X', 'O'],
       subscribers: [],
     };
+
+    // player one score
+    this.playerOneScore = {
+      value: 0,
+      validValues: [],
+      subscribers: [],
+    };
+
+    // player two avatar
+    this.playerTwoScore = {
+      value: 0,
+      validValues: [],
+      subscribers: [],
+    };
   }
 
   /**

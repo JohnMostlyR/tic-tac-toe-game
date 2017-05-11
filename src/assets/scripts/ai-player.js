@@ -98,7 +98,7 @@
     this.notify = function (turn) {
 
       // Add some 'thinking' time
-      const thinkingTime = 1500;
+      const thinkingTime = 1000;
       let thinkingTimerId = window.setTimeout(() => {
         makeAMove(turn);
       }, thinkingTime);

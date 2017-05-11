@@ -23,14 +23,7 @@
 
       if (newState.checkForTerminalState()) {
         this.status = 'ended';
-
-        if (newState.result === 'player-one-won') {
-          this.controller.showResult('player-one-won');
-        } else if (newState.result === 'player-two-won') {
-          this.controller.showResult('player-two-won');
-        } else {
-          this.controller.showResult('draw');
-        }
+        this.controller.showResult(newState.result);
       } else {
         if (this.currentState.whoseTurn === 'player-one') {
           this.controller.updateView('player-one-goes');
@@ -60,9 +53,9 @@
   }
 
   Game.prototype.calculateScore = function (finalState) {
-    if (finalState.result === 'player-one-won') {
+    if (finalState.result.winner === 'player-one-won') {
       return 10 - finalState.numberOfComputerMoves;
-    } else if (finalState.result === 'player-two-won') {
+    } else if (finalState.result.winner === 'player-two-won') {
       return -10 + finalState.numberOfComputerMoves;
     }
 
