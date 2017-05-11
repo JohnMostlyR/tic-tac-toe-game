@@ -1,0 +1,62 @@
+.c-ttt__btn {
+  margin: 10px;
+  padding: 10px 20px;
+  appearance: none;
+  background-color: transparent;
+  border: 3px solid transparent;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  font-family: 'Finger Paint', cursive;
+  font-size: 21px;
+
+  &:disabled {
+    opacity: 0;
+  }
+
+  &:active,
+  &:focus {
+    border: 3px solid #333;
+    outline: none;
+  }
+
+  &:hover:disabled {
+    border: 3px dotted transparent;
+  }
+
+  &:hover {
+    border: 3px dotted #333;
+  }
+}
+
+.c-ttt__btn-grp {
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: none;
+
+  &:not(:first-child) {
+    margin-top: 20px;
+  }
+}
+
+.c-ttt__btn-grp-title {
+  font-size: 21px;
+}
+
+.c-ttt__label {
+  margin: 10px;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 3px dotted transparent;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  font-size: 25px;
+
+  &:hover {
+    border: 3px dotted #333;
+  }
+}
+
+.c-ttt__radio {
+  &:checked + .c-ttt__label {
+    border: 3px solid #333;
+  }
+}

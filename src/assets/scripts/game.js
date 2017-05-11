@@ -3,6 +3,7 @@
 
   function Game(controller) {
     this.controller = controller;
+    this.isOnePlayer = (this.controller.model.getProperty('gameType') === 1);
     this.currentState = new window.ttt.State();
     this.currentState.board = [
       'E', 'E', 'E',
@@ -10,7 +11,11 @@
       'E', 'E', 'E',
     ];
     this.currentState.whoseTurn = 'X';
-    this.aiPlayer = new window.ttt.AIPlayer();
+
+    if (this.isOnePlayer) {
+      this.aiPlayer = new window.ttt.AIPlayer();
+    }
+
     this.status = 'beginning';
 
     this.advanceTo = function (newState) {
@@ -28,19 +33,25 @@
         }
       } else {
         if (this.currentState.whoseTurn === 'X') {
-          this.controller.updateView('human');
+          this.controller.updateView('player-one-goes');
         } else {
-          this.controller.updateView('robot');
+          this.controller.updateView('player-two-goes');
 
-          // notify the AI player its turn has come up
-          this.aiPlayer.notify('O');
+          if (this.aiPlayer) {
+            // notify the AI player its turn has come up
+            this.aiPlayer.notify('O');
+          }
         }
       }
     };
 
     this.startNewGame = function () {
       if (this.status === 'beginning') {
-        this.aiPlayer.setGame(this);
+
+        if (this.aiPlayer) {
+          this.aiPlayer.setGame(this);
+        }
+        
         // invoke advanceTo with the initial state
         this.advanceTo(this.currentState);
         this.status = 'running';

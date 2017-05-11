@@ -321,6 +321,7 @@ module.exports = function (grunt) {
         // Array of selectors to always leave in.
         whitelist: [
           '.pac-container', // Google geocode pick list selector
+          '.s-hidden',
         ],
       },
       target: {

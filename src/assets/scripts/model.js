@@ -23,6 +23,27 @@
       validValues: ['X-won', 'O-won'],
       subscribers: [],
     };
+
+    // 1 = human/computer, 2 = human/human
+    this.gameType = {
+      value: 0,
+      validValues: [1, 2],
+      subscribers: [],
+    };
+
+    // player one avatar
+    this.playerOneAvatar = {
+      value: '',
+      validValues: ['X', 'O'],
+      subscribers: [],
+    };
+
+    // player two avatar
+    this.playerTwoAvatar = {
+      value: '',
+      validValues: ['X', 'O'],
+      subscribers: [],
+    };
   }
 
   /**

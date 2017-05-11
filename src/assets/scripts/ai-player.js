@@ -96,7 +96,12 @@
     };
 
     this.notify = function (turn) {
-      makeAMove(turn);
+
+      // Add some 'thinking' time
+      const thinkingTime = 1500;
+      let thinkingTimerId = window.setTimeout(() => {
+        makeAMove(turn);
+      }, thinkingTime);
     };
   }
 

@@ -13,10 +13,10 @@ $l-scroll-height: 600px;
 
   &__paper {
     background-color: $c-scroll-paper-color;
+    height: $c-scroll-paper-height;
     margin: 0 $c-scroll-knob-height / 2;
     min-height: $c-scroll-scroll-height;
     position: relative;
-    z-index: -1;
     background-image: linear-gradient(to top, #c19b5d + 10 0%, #d9ba7e + 10 3%, #ebd095 10%, #ebd095 89%, #e5c78b 91%, #c19b5d + 20 100%);
     box-shadow: inset 0 0 32px #c19b5d;
   }
@@ -33,6 +33,7 @@ $l-scroll-height: 600px;
     position: relative;
     width: $c-scroll-scroll-width;
     margin: 0 5px;
+    z-index: +1;
 
     &:before {
       content: '';
@@ -78,6 +79,7 @@ $l-scroll-height: 600px;
   position: absolute;
   right: 0;
   top: 0;
+  color: #333;
 }
 
 .c-scroll__holder--bottom {

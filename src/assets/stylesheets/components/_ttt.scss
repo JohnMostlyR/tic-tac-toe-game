@@ -35,6 +35,14 @@
   opacity: 0.90;
 }
 
-.s-disabled {
-  display: none;
+.s-hidden {
+  height: 1px;
+  margin: -1px;
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  padding: 0;
 }

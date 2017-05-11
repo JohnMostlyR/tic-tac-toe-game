@@ -1,13 +1,62 @@
 (function (window) {
   'use strict';
 
+  const document = window.document;
+
   function View() {
+    this.form = document.getElementById('js-ttt-preferences-form');
+
     // holds the state of the initial controls visibility
     this.intialControlsVisible = true;
 
     // holds the current visible view
     this.currentView = '';
+
+    this.currentElementNode = null;
+
+    this.showSetupStage();
   }
+
+  View.prototype.showSetupStage = function () {
+    this.gameSetupStage = true;
+    this.form.style.opacity = 1;
+    this.form.style.removeProperty('width');
+
+    const scrollNode = document.querySelector('.l-scroll');
+    scrollNode.style.marginTop = '-10vmin';
+
+    ['l-rhombus-banner', 'l-whose-turn', 'l-board'].forEach((cssClass) => {
+      const nodeList = document.querySelectorAll(`.${cssClass}`);
+      [...nodeList].forEach((node) => {
+        // node.classList.add('s-hidden');
+        node.style.opacity = 0;
+
+        if (cssClass === 'l-board') {
+          node.style.width = 0;
+        }
+      });
+    });
+  };
+
+  View.prototype.showGameStage = function () {
+    this.gameSetupStage = false;
+    this.form.style.opacity = 0;
+    this.form.style.width = 0;
+
+    const scrollNode = document.querySelector('.l-scroll');
+    scrollNode.style.removeProperty('margin-top');
+
+    ['l-rhombus-banner', 'l-board'].forEach((cssClass) => {
+      const nodeList = document.querySelectorAll(`.${cssClass}`);
+      [...nodeList].forEach((node) => {
+        node.style.removeProperty('opacity');
+
+        if (cssClass === 'l-board') {
+          node.style.removeProperty('width');
+        }
+      });
+    });
+  };
 
   View.prototype.switchViewTo = function (turn) {
 
@@ -30,6 +79,25 @@
     }
   };
 
+  View.prototype.updateView = function (elementId) {
+    const _updateElement = (_elementId) => {
+      this.currentElementNode = document.querySelector(`#js-ttt-${_elementId}`);
+      this.currentElementNode.style.opacity = 1;
+    };
+
+    if (this.currentElementNode) {
+      this.currentElementNode.style.opacity = 0;
+    }
+
+    _updateElement(elementId);
+  };
+
+  View.prototype.enableStartButton = function () {
+    const submitBtn = this.form.querySelector('input[type="submit"');
+    submitBtn.removeAttribute('disabled');
+    submitBtn.classList.remove('s-hidden');
+  };
+
   View.prototype.claimCell = function (idx, avatar) {
     const targetCell = document.getElementById(`js-ttt-btn-${idx}`);
     targetCell.innerHTML = avatar;
@@ -38,13 +106,23 @@
 
   View.prototype.subscribe = function (event, subscriber) {
     switch (event) {
-      case 'onClickStart':
-        window.addEventListener('click', (ev) => {
-          if (ev.target) {
-            if (ev.target.id === 'js-ttt-start') {
-              subscriber();
-            }
+      case 'onEnterPreference':
+        this.form.addEventListener('change', (ev) => {
+          if (ev.target && ev.target.name) {
+            const name = ev.target.name.toUpperCase();
+            const value = ev.target.value.toUpperCase();
+
+            subscriber(name, value);
           }
+        }, true);
+        break;
+      case 'onClickStart':
+        this.form.addEventListener('submit', (ev) => {
+          ev.stopPropagation();
+          ev.preventDefault();
+
+          this.form.classList.add('s-disabled');
+          subscriber();
         });
         break;
       case 'onClickCell':
