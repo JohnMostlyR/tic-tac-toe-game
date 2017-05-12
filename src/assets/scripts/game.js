@@ -15,7 +15,9 @@
       'N', 'N', 'N',
       'N', 'N', 'N',
     ];
-    this.currentState.whoseTurn = 'player-one';
+
+    // Randomly choose the player who is to start.
+    this.currentState.whoseTurn = (Math.floor((Math.random() * 2) + 1) === 1) ? 'player-one' : 'player-two';
 
     // Instantiate a new AI Player when the game type is 'one player'.
     if (this.isOnePlayer) {
