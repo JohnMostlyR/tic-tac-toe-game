@@ -122,15 +122,24 @@
         return newPossibleMove;
       });
 
-      // Sort all possible actions based on the minimax score.
+      // Sort all possible moves based on the minimax score.
       if (whoseTurn === 'player-one') {
         possibleMoves.sort(sortDescending);
       } else {
         possibleMoves.sort(sortAscending);
       }
 
-      // Take the first action as this is the best option.
-      const chosenAction = possibleMoves[0];
+      // The move with the best score is at index 0
+      const bestScore = possibleMoves[0].minimaxValue;
+
+      // Get all moves with the same score as the best score.
+      const scoresWithEqualWeight = possibleMoves.filter((move) => {
+        return (move.minimaxValue === bestScore);
+      });
+
+      // Now randomly choose one move.
+      const chosenIdx = Math.floor(Math.random() * scoresWithEqualWeight.length);
+      const chosenAction = scoresWithEqualWeight[chosenIdx];
 
       // Update the state.
       const nextState = chosenAction.addState(this.currentGame.currentState);
