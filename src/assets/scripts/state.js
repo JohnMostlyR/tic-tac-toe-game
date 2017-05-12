@@ -1,10 +1,15 @@
 (function (window) {
   'use strict';
 
+  /**
+   * Creates a new State
+   * @param {?Object} previousState
+   * @constructor
+   */
   function State(previousState) {
     this.board = [];
     this.whoseTurn = '';
-    this.result = 'still running';
+    this.result = 'running';
     this.numberOfComputerMoves = 0;
 
     if (typeof previousState === 'object') {
@@ -15,23 +20,35 @@
     }
   }
 
+  /**
+   * @method switchTurns
+   */
   State.prototype.switchTurns = function () {
     this.whoseTurn = this.whoseTurn === 'player-one' ? 'player-two' : 'player-one';
   };
 
+  /**
+   * @method getFreePositions
+   * @return {Array}
+   */
   State.prototype.getFreePositions = function () {
     return this.board.reduce((acc, cell, idx) => {
-      return (cell === 'E') ? acc.concat(idx) : acc;
+      return (cell === 'N') ? acc.concat(idx) : acc;
     }, []);
   };
 
+  /**
+   * @method checkForTerminalState
+   * @description Check if the game has ended. Sets the result object to hold the winner and the winning positions.
+   * @return {boolean} - 'true' game ended, 'false' otherwise.
+   */
   State.prototype.checkForTerminalState = function () {
     const BOARD = this.board;
 
     // check rows
     for (let i = 0; i <= 6; i += 3) {
       if (
-        BOARD[i] !== 'E' &&
+        BOARD[i] !== 'N' &&
         BOARD[i] === BOARD[i + 1] &&
         BOARD[i + 1] === BOARD[i + 2]
       ) {
@@ -47,7 +64,7 @@
     // check columns
     for (let i = 0; i <= 2; i += 1) {
       if (
-        BOARD[i] !== 'E' &&
+        BOARD[i] !== 'N' &&
         BOARD[i] === BOARD[i + 3] &&
         BOARD[i + 3] === BOARD[i + 6]
       ) {
@@ -63,7 +80,7 @@
     // check diagonals
     for (let i = 0, j = 4; i <= 2; i += 2, j -= 2) {
       if (
-        BOARD[i] !== 'E' &&
+        BOARD[i] !== 'N' &&
         BOARD[i] === BOARD[i + j] &&
         BOARD[i + j] === BOARD[i + (2 * j)]
       ) {

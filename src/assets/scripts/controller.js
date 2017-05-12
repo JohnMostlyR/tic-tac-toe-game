@@ -1,11 +1,18 @@
 (function (window) {
   'use strict';
 
+  /**
+   * Creates a new Controller
+   * @param {Object} model
+   * @param {Object} view
+   * @constructor
+   */
   function Controller(model, view) {
     this.model = model;
     this.view = view;
     this.game = null;
 
+    // Subscribe to View events
     this.view.subscribe('onClickStart', () => {
       this.startNewGame();
     });
@@ -25,6 +32,7 @@
       }
     });
 
+    // Subscribe to Model events
     this.model.subscribe('gameType', () => {
       this.enableStartButton();
     });
@@ -34,10 +42,20 @@
     });
   }
 
+  /**
+   * @method setGameType
+   * @description Update the model with the chosen game type
+   * @param {string|number} gameType - A '1' represents a one player game. A '2' represents a two player game.
+   */
   Controller.prototype.setGameType = function (gameType) {
     this.model.setProperty('gameType', parseInt(gameType));
   };
 
+  /**
+   * @method setAvatar
+   * @description Update the model with the chosen avatar.
+   * @param {string} avatar - 'X' or 'O'.
+   */
   Controller.prototype.setAvatar = function (avatar) {
     this.model.setProperty('playerOneAvatar', avatar);
 
@@ -45,16 +63,19 @@
     this.model.setProperty('playerTwoAvatar', playerTwoAvatar);
   };
 
+  /**
+   * @method enableStartButton
+   * @description Tell the view to enable the start button when all form conditions are met.
+   */
   Controller.prototype.enableStartButton = function () {
-    if (this.model.getProperty('gameType') && this.model.getProperty('playerOneAvatar')) {
+    if (!!this.model.getProperty('gameType') && !!this.model.getProperty('playerOneAvatar')) {
       this.view.enableStartButton();
     }
   };
 
-  /*
-   * start game (onclick div.start) behavior and control
-   * when start is clicked and a level is chosen, the game status changes to "running"
-   * and UI view to switched to indicate that it's human's trun to play
+  /**
+   * @method startNewGame
+   * @description Sets the game board to its original state. Shows the game stage and instantiate a new game.
    */
   Controller.prototype.startNewGame = function () {
     console.info('Starting');
@@ -64,6 +85,12 @@
     this.game.startNewGame();
   };
 
+  /**
+   * @method claimCell
+   * @description Prepare the data for the view and tell it to show the cell is taken.
+   * @param {number} cell - The position
+   * @param {string} whoseTurn - 'player-one' or 'player-two'
+   */
   Controller.prototype.claimCell = function (cell, whoseTurn) {
     console.info(`Claim cell: ${cell} for player: ${whoseTurn}`);
 
@@ -76,11 +103,20 @@
     this.view.claimCell(cell, avatar);
   };
 
+  /**
+   * @method clickOnCell
+   * @description Handle a click event on the game board.
+   * @param {number} cell
+   */
   Controller.prototype.clickOnCell = function (cell) {
     if (this.game && this.game.status === 'running') {
       if (this.game.currentState.whoseTurn === 'player-one' || this.model.getProperty('gameType') === 2) {
+        // Only process when player one has its turn, in a one player game.
+
+        // Instantiate a new State with the current game its state
         const next = new window.ttt.State(this.game.currentState);
 
+        // Claim the chosen cell
         next.board[cell] = this.game.currentState.whoseTurn;
         this.claimCell(cell, this.game.currentState.whoseTurn);
 
@@ -90,11 +126,22 @@
     }
   };
 
+  /**
+   * @method updateView
+   * @description Tell the view to show an element
+   * @param {string} show - The ID of the element to show, without any namespacing!
+   */
   Controller.prototype.updateView = function (show) {
-    console.info(`Update view to show: ${show}`);
     this.view.updateView(show);
   };
 
+  /**
+   * @method showResult
+   * @description Tells the view to show the game its end result and starts a new game after a time out.
+   * @param {Object} result
+   * @param {string} result.winner - 'player-one-won', 'player-two-won' or 'draw'.
+   * @param {Array} result.positions - Holds the positions of the cells for the winning row.
+   */
   Controller.prototype.showResult = function (result) {
     const winningPositions = result.positions.map((position) => {
       return `js-ttt-btn-${position}`;

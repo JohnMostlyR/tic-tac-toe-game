@@ -1,27 +1,39 @@
 (function (window) {
   'use strict';
 
+  /**
+   * Reference to window.document
+   * @type {HTMLDocument}
+   */
   const document = window.document;
 
+  /**
+   * Created a new View
+   * @param {Object} model
+   * @constructor
+   */
   function View(model) {
     this.model = model;
     this.form = document.getElementById('js-ttt-preferences-form');
-
-    // holds the state of the initial controls visibility
-    this.intialControlsVisible = true;
-
-    // holds the current visible view
-    this.currentView = '';
 
     this.currentElementNode = null;
 
     this.showSetupStage();
   }
 
+  /**
+   * @method showSetupStage
+   * @description Display a form where the user can choose preferences for the game to play.
+   * @public
+   */
   View.prototype.showSetupStage = function () {
     this.gameSetupStage = true;
 
     // Show the form for adding preferences.
+    const submitBtn = this.form.querySelector('input[type="submit"');
+    submitBtn.setAttribute('disabled', 'disabled');
+    submitBtn.style.opacity = 0;
+
     this.form.reset();
     this.form.style.opacity = 1;
     this.form.style.removeProperty('width');
@@ -45,6 +57,11 @@
     });
   };
 
+  /**
+   * @method showGameStage
+   * @description Show the stage for the game.
+   * @public
+   */
   View.prototype.showGameStage = function () {
     this.gameSetupStage = false;
 
@@ -57,14 +74,17 @@
     // Show scores for human player two or computer depending on the game type, which can be one player or two players.
     const gameType = this.model.getProperty('gameType');
 
+    // Depending on the game type the score board should read the score for 'Player two' or 'Computer'.
     if (gameType === 2) {
 
       // Two players game.
       document.getElementById('js-ttt-show-score-computer').style.display = 'none';
+      document.getElementById('js-ttt-show-score-human').style.removeProperty('display');
     } else {
 
       // One against computer
       document.getElementById('js-ttt-show-score-human').style.display = 'none';
+      document.getElementById('js-ttt-show-score-computer').style.removeProperty('display');
     }
 
     // Move the scroll down to its normal position.
@@ -85,6 +105,13 @@
     });
   };
 
+  /**
+   * @method showResult
+   * @description Show the result when the game has ended.
+   * @param {string} result - Describes the winner or a draw.
+   * @param {Array} positions - An array with ID's of the positions that makes up the winning row.
+   * @public
+   */
   View.prototype.showResult = function (result, positions) {
 
     // highlight the winning positions
@@ -108,6 +135,11 @@
     document.getElementById('js-ttt-show-player-two-score').innerHTML = this.model.getProperty('playerTwoScore');
   };
 
+  /**
+   * @method clearBoard
+   * @description Set the game board to its initial state.
+   * @public
+   */
   View.prototype.clearBoard = function () {
 
     // Remove the result banner from view
@@ -122,27 +154,12 @@
     });
   };
 
-  View.prototype.switchViewTo = function (turn) {
-
-    // helper function for async calling
-    const _switch = (_turn) => {
-      console.info(`#${_turn}`);
-      this.currentView = document.querySelector(`#${_turn}`);
-      this.currentView.style.display = 'block';
-    };
-
-    if (this.intialControlsVisible) {
-      // if the game is just starting
-      this.intialControlsVisible = false;
-      document.querySelector('.initial').style.display = 'none';
-      _switch(turn);
-    } else {
-      // if the game is in an intermediate state
-      this.currentView.style.display = 'none';
-      _switch(turn);
-    }
-  };
-
+  /**
+   * @method updateView
+   * @description Shows/hides an element by the given ID
+   * @param {string} elementId - The ID without namespacing.
+   * @public
+   */
   View.prototype.updateView = function (elementId) {
     const _updateElement = (_elementId) => {
       this.currentElementNode = document.querySelector(`#js-ttt-${_elementId}`);
@@ -156,18 +173,36 @@
     _updateElement(elementId);
   };
 
+  /**
+   * @method enableStartButton
+   * @description Enable the start button. This should be disabled until all form requirements are met.
+   * @public
+   */
   View.prototype.enableStartButton = function () {
     const submitBtn = this.form.querySelector('input[type="submit"');
     submitBtn.removeAttribute('disabled');
-    submitBtn.classList.remove('s-hidden');
+    submitBtn.style.removeProperty('opacity');
   };
 
+  /**
+   * @method claimCell
+   * @description Claim this cell for the current player.
+   * @param {number} idx - The cell its position on the board.
+   * @param {string} avatar - 'X' or 'O', depending on the preference that has been set.
+   * @public
+   */
   View.prototype.claimCell = function (idx, avatar) {
     const targetCell = document.getElementById(`js-ttt-btn-${idx}`);
     targetCell.innerHTML = avatar;
     targetCell.setAttribute('disabled', 'disabled');
   };
 
+  /**
+   * @method subscribe
+   * @description Subscribe for events.
+   * @param {string} event - Description of the event to subscribe to.
+   * @param {Function} subscriber - The function to call.
+   */
   View.prototype.subscribe = function (event, subscriber) {
     switch (event) {
       case 'onEnterPreference':
@@ -193,8 +228,14 @@
         window.addEventListener('click', (ev) => {
           if (ev.target && ev.target.id) {
             if (ev.target.id.toLowerCase().substr(0, 11) === 'js-ttt-btn-') {
+              const idx = parseInt(ev.target.id.substr(11));
+
+              if (isNaN(idx)) {
+                return;
+              }
+
               ev.stopPropagation();
-              subscriber(parseInt(ev.target.id.substr(11)));
+              subscriber(idx);
             }
           }
         });
