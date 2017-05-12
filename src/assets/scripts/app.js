@@ -7,5 +7,10 @@
     this.controller = new ttt.Controller(this.model, this.view);
   }
 
-  const newTicTacToe = new TicTacToe();
+  let newTicTacToe = new TicTacToe();
+
+  newTicTacToe.view.subscribe('onReset', () => {
+    newTicTacToe = null;
+    newTicTacToe = new TicTacToe();
+  });
 })();

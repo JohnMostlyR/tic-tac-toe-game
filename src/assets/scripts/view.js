@@ -22,6 +22,7 @@
     this.gameSetupStage = true;
 
     // Show the form for adding preferences.
+    this.form.reset();
     this.form.style.opacity = 1;
     this.form.style.removeProperty('width');
 
@@ -31,7 +32,7 @@
     scrollNode.style.marginTop = '-10vmin';
 
     // Hide the score board, the indicator of whose turn it is and the game board.
-    ['l-rhombus-banner', 'l-whose-turn', 'l-board'].forEach((cssClass) => {
+    ['l-rhombus-banner', 'l-whose-turn', 'l-board', 'l-reset-button'].forEach((cssClass) => {
       const nodeList = document.querySelectorAll(`.${cssClass}`);
       [...nodeList].forEach((node) => {
         node.style.opacity = 0;
@@ -71,7 +72,7 @@
     scrollNode.style.removeProperty('margin-top');
 
     // Show the score board and the game board.
-    ['l-rhombus-banner', 'l-board'].forEach((cssClass) => {
+    ['l-rhombus-banner', 'l-board', 'l-reset-button'].forEach((cssClass) => {
       const nodeList = document.querySelectorAll(`.${cssClass}`);
       [...nodeList].forEach((node) => {
         node.style.removeProperty('opacity');
@@ -194,6 +195,16 @@
             if (ev.target.id.toLowerCase().substr(0, 11) === 'js-ttt-btn-') {
               ev.stopPropagation();
               subscriber(parseInt(ev.target.id.substr(11)));
+            }
+          }
+        });
+        break;
+      case 'onReset':
+        window.addEventListener('click', (ev) => {
+          if (ev.target && ev.target.id) {
+            if (ev.target.id.toLowerCase() === 'js-ttt-btn-reset' && this.gameSetupStage === false) {
+              ev.stopPropagation();
+              subscriber();
             }
           }
         });
