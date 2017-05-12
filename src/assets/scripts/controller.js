@@ -3,8 +3,8 @@
 
   /**
    * Creates a new Controller
-   * @param {Object} model
-   * @param {Object} view
+   * @param {Model} model
+   * @param {View} view
    * @constructor
    */
   function Controller(model, view) {

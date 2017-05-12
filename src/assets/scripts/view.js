@@ -9,7 +9,7 @@
 
   /**
    * Created a new View
-   * @param {Object} model
+   * @param {Model} model
    * @constructor
    */
   function View(model) {

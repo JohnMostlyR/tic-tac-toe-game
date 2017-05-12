@@ -12,7 +12,7 @@
 
     /**
      * @method addState
-     * @param state
+     * @param {State} state
      * @return {State}
      */
     this.addState = function (state) {

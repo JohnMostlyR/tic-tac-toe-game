@@ -11,7 +11,7 @@
     /**
      * @method determineBestMove
      * @description Implementation of the minimax algorithm
-     * @param {Object} state - A game state to calculate the minimax value for
+     * @param {State} state - A game state to calculate the minimax value for
      * @return {number} - The calculated minimax value for this state
      * @private
      * @see {@link https://en.wikipedia.org/wiki/Minimax|Minimax}
@@ -145,7 +145,7 @@
 
     /**
      * @method setGame
-     * @param {Object} game
+     * @param {Game} game
      * @public
      */
     this.setGame = function (game) {

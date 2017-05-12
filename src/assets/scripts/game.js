@@ -3,7 +3,7 @@
 
   /**
    * Creates a new Game
-   * @param {Object} controller
+   * @param {Controller} controller
    * @constructor
    */
   function Game(controller) {
