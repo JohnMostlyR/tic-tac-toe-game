@@ -104,6 +104,10 @@
     }
   };
 
+  /**
+   * @method getProperty
+   * @param {string} property
+   */
   Model.prototype.getProperty = function (property) {
     if (!this[property] || typeof this[property] !== 'object') {
       console.error(`Property '${property} does not exist`);
