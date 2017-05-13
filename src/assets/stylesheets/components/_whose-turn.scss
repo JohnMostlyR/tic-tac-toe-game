@@ -22,6 +22,7 @@
 }
 
 .l-whose-turn {
+  transition: opacity $global-transition;
 }
 
 .l-whose-turn--left {

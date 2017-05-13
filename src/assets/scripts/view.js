@@ -87,6 +87,19 @@
       document.getElementById('js-ttt-show-score-computer').style.removeProperty('display');
     }
 
+    // Depending on the game type the second show turn should read 'Player two' or 'Computer'.
+    if (gameType === 2) {
+
+      // Two players game.
+      document.getElementById('js-ttt-player-two-computer').style.display = 'none';
+      document.getElementById('js-ttt-player-two-human').style.removeProperty('display');
+    } else {
+
+      // One against computer
+      document.getElementById('js-ttt-player-two-human').style.display = 'none';
+      document.getElementById('js-ttt-player-two-computer').style.removeProperty('display');
+    }
+
     // Move the scroll down to its normal position.
     const scrollNode = document.querySelector('.l-scroll');
     scrollNode.style.removeProperty('margin-top');

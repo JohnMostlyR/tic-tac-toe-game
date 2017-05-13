@@ -170,7 +170,7 @@
     this.notifyMe = function (whoseTurn) {
 
       // Add some 'thinking' time
-      const thinkingTime = 1000;
+      const thinkingTime = 700;
       let thinkingTimerId = window.setTimeout(() => {
         makeAMove(whoseTurn);
       }, thinkingTime);

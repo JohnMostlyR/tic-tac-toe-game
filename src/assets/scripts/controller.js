@@ -159,7 +159,7 @@
       let oldScore = this.model.getProperty('playerTwoScore');
       this.model.setProperty('playerTwoScore', oldScore += 1);
 
-      resultString = (this.model.getProperty('gameType') === 2) ? 'Sorry, Computer Wins' : 'Player Two Wins!';
+      resultString = (this.model.getProperty('gameType') === 1) ? 'Sorry, Computer Wins' : 'Player Two Wins!';
     } else {
       resultString = 'It\'s a Draw';
     }
