@@ -46,6 +46,7 @@
   color: transparent;
   font-family: 'Finger Paint', cursive;
   font-size: 5vh;
+  transition: color $global-transition;
 
   &:active,
   &:focus {
@@ -71,4 +72,5 @@
   justify-content: center;
   margin-left: -12px;
   position: relative;
+  transition: opacity $global-transition;
 }

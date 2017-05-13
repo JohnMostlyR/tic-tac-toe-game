@@ -35,8 +35,8 @@
     submitBtn.style.opacity = 0;
 
     this.form.reset();
-    this.form.style.opacity = 1;
     this.form.style.removeProperty('width');
+    this.form.style.opacity = 1;
 
     // Move the scroll up a bit as there would be a huge space where the scores and the indicator of whose turn it is
     // would otherwise be.
@@ -147,10 +147,14 @@
     resultBanner.style.display = 'none';
 
     const buttonNodes = document.querySelectorAll('.c-board__btn');
+
     [...buttonNodes].forEach((buttonNode) => {
       buttonNode.style.removeProperty('color');
       buttonNode.removeAttribute('disabled');
-      buttonNode.innerHTML = buttonNode.id.substr(11);
+
+      // Remove all placed 'X-es' and 'O's' with something neutral.
+      // Leaving the button 'empty' will screw up the layout of the board.
+      buttonNode.innerHTML = String.fromCodePoint(0x02297); // Circled times operator
     });
   };
 

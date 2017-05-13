@@ -10,6 +10,7 @@
   color: #ffeeb5;
   font-size: 12px;
   text-shadow: 1px 0 0 #D4AF37;
+  transition: opacity $global-transition;
 }
 
 .c-whose-turn__p {

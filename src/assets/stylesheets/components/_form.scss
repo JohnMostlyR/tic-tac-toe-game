@@ -1,3 +1,7 @@
+.c-ttt__form {
+  transition: opacity $global-transition;
+}
+
 .c-ttt__btn {
   margin: 10px;
   padding: 10px 20px;
@@ -7,6 +11,7 @@
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   font-family: 'Finger Paint', cursive;
   font-size: 21px;
+  transition: opacity $global-transition;
 
   &:disabled {
     opacity: 0;

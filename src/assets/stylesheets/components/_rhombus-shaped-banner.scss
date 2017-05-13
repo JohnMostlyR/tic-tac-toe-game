@@ -7,6 +7,7 @@ $rhombus-banner-width: $rhombus-banner-height;
   transform: rotate(45deg);
   width: $rhombus-banner-width;
   background-image: linear-gradient(45deg, #ae8913 50%, #ffeeb5 - 50);
+  transition: opacity $global-transition;
 
   &:after {
     bottom: 0;

@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "animate-scss": "^3.2.1",
+    "animejs": "^2.0.2",
     "babel-runtime": "^6.23.0",
     "browserslist": "^1.7.5",
     "fg-loadcss": "^1.2.0",
