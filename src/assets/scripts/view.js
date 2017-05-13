@@ -128,7 +128,7 @@
 
     // show the result
     const resultBanner = document.getElementById('js-ttt-end-result');
-    resultBanner.style.display = 'inherit';
+    resultBanner.classList.add('l-end-result--show');
 
     // update the score boards
     document.getElementById('js-ttt-show-player-one-score').innerHTML = this.model.getProperty('playerOneScore');
@@ -144,7 +144,7 @@
 
     // Remove the result banner from view
     const resultBanner = document.getElementById('js-ttt-end-result');
-    resultBanner.style.display = 'none';
+    resultBanner.classList.remove('l-end-result--show');
 
     const buttonNodes = document.querySelectorAll('.c-board__btn');
 
