@@ -146,6 +146,10 @@
     // update the score boards
     document.getElementById('js-ttt-show-player-one-score').innerHTML = this.model.getProperty('playerOneScore');
     document.getElementById('js-ttt-show-player-two-score').innerHTML = this.model.getProperty('playerTwoScore');
+
+    // hide turns
+    document.getElementById('js-ttt-player-one-goes').style.opacity = 0;
+    document.getElementById('js-ttt-player-two-goes').style.opacity = 0;
   };
 
   /**
@@ -178,6 +182,7 @@
    * @public
    */
   View.prototype.updateView = function (elementId) {
+    console.info('show: ', elementId);
     const _updateElement = (_elementId) => {
       this.currentElementNode = document.querySelector(`#js-ttt-${_elementId}`);
       this.currentElementNode.style.opacity = 1;
@@ -223,12 +228,15 @@
   View.prototype.subscribe = function (event, subscriber) {
     switch (event) {
       case 'onEnterPreference':
-        this.form.addEventListener('change', (ev) => {
+        this.form.addEventListener('click', (ev) => {
           if (ev.target && ev.target.name) {
             const name = ev.target.name.toUpperCase();
             const value = ev.target.value.toUpperCase();
 
-            subscriber(name, value);
+            if (name === 'GAMETYPE' || name === 'AVATAR') {
+              ev.stopPropagation();
+              subscriber(name, value);
+            }
           }
         }, true);
         break;
@@ -236,10 +244,9 @@
         this.form.addEventListener('submit', (ev) => {
           ev.stopPropagation();
           ev.preventDefault();
-
           this.form.classList.add('s-disabled');
-          subscriber();
-        });
+          subscriber(ev.target.gameType.value, ev.target.avatar.value);
+        }, true);
         break;
       case 'onClickCell':
         window.addEventListener('click', (ev) => {
@@ -255,18 +262,18 @@
               subscriber(idx);
             }
           }
-        });
+        }, true);
         break;
-      case 'onReset':
-        window.addEventListener('click', (ev) => {
-          if (ev.target && ev.target.id) {
-            if (ev.target.id.toLowerCase() === 'js-ttt-btn-reset' && this.gameSetupStage === false) {
-              ev.stopPropagation();
-              subscriber();
-            }
-          }
-        });
-        break;
+      // case 'onReset':
+      //   window.addEventListener('click', (ev) => {
+      //     if (ev.target && ev.target.id) {
+      //       if (ev.target.id.toLowerCase() === 'js-ttt-btn-reset' && this.gameSetupStage === false) {
+      //         ev.stopPropagation();
+      //         subscriber();
+      //       }
+      //     }
+      //   }, true);
+      //   break;
       default:
         console.error(`No such event: ${event}`);
         break;

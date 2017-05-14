@@ -11,9 +11,19 @@
     this.model = model;
     this.view = view;
     this.game = null;
+    this.timeOutId = 0;
+
+    const preferenceChosen = {
+      gameType: false,
+      avatar: false,
+    };
 
     // Subscribe to View events
-    this.view.subscribe('onClickStart', () => {
+    this.view.subscribe('onClickStart', (gameType, avatar) => {
+      preferenceChosen.gameType = false;
+      preferenceChosen.avatar = false;
+      this.setGameType(gameType);
+      this.setAvatar(avatar);
       this.startNewGame();
     });
 
@@ -22,24 +32,25 @@
     });
 
     this.view.subscribe('onEnterPreference', (name, value) => {
+      console.info(`onEnterPreference: ${name}, ${value}`);
       const nameUpperCase = name.toUpperCase();
       const valueUpperCase = value.toUpperCase();
 
-      if (nameUpperCase === 'GAME-TYPE') {
-        this.setGameType(valueUpperCase);
-      } else if (nameUpperCase === 'AVATAR') {
-        this.setAvatar(valueUpperCase);
+      if (nameUpperCase === 'GAMETYPE' && valueUpperCase) {
+        preferenceChosen.gameType = true;
+      } else if (nameUpperCase === 'AVATAR' && (valueUpperCase === 'X' || valueUpperCase === 'O')) {
+        preferenceChosen.avatar = true;
+      }
+
+      if (preferenceChosen.gameType && preferenceChosen.avatar) {
+        console.info('chosen: ', preferenceChosen);
+        this.enableStartButton();
       }
     });
 
-    // Subscribe to Model events
-    this.model.subscribe('gameType', () => {
-      this.enableStartButton();
-    });
-
-    this.model.subscribe('playerOneAvatar', () => {
-      this.enableStartButton();
-    });
+    // this.view.subscribe('onReset', () => {
+    //   clearTimeout(this.timeOutId);
+    // });
   }
 
   /**
@@ -68,11 +79,8 @@
    * @description Tell the view to enable the start button when all form conditions are met.
    */
   Controller.prototype.enableStartButton = function () {
-    if (!!this.model.getProperty('gameType') && !!this.model.getProperty('playerOneAvatar')) {
-      this.view.enableStartButton();
-    }
+    this.view.enableStartButton();
   };
-
   /**
    * @method startNewGame
    * @description Sets the game board to its original state. Shows the game stage and instantiate a new game.
@@ -92,8 +100,6 @@
    * @param {string} whoseTurn - 'player-one' or 'player-two'
    */
   Controller.prototype.claimCell = function (cell, whoseTurn) {
-    console.info(`Claim cell: ${cell} for player: ${whoseTurn}`);
-
     const avatar = (whoseTurn === 'player-one')
       ?
       this.model.getProperty('playerOneAvatar')
@@ -168,8 +174,8 @@
     this.view.showResult(resultString, winningPositions);
 
     // Start a new game after a timeout
-    const timeToWait = 5000;
-    const timeOutId = window.setTimeout(() => {
+    const timeToWait = 3000;
+    this.timeOutId = window.setTimeout(() => {
       this.startNewGame();
     }, timeToWait);
   };

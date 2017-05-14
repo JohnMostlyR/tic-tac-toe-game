@@ -9,8 +9,13 @@
 
   let newTicTacToe = new TicTacToe();
 
-  newTicTacToe.view.subscribe('onReset', () => {
-    newTicTacToe = null;
-    newTicTacToe = new TicTacToe();
-  });
+  window.addEventListener('click', (ev) => {
+    if (ev.target && ev.target.id) {
+      if (ev.target.id.toLowerCase() === 'js-ttt-btn-reset') {
+        ev.stopPropagation();
+        newTicTacToe = null;
+        window.location.reload(true);
+      }
+    }
+  }, true);
 })();
