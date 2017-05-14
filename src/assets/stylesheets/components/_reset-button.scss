@@ -64,6 +64,10 @@ $width: 90px;
   transform: rotate3d(4, -4, -5, 69deg) translateX(-20px);
 }
 
+.l-firecracker--one .c-firecracker__text {
+  transform: rotate(0); // Firefox switches z-index;
+}
+
 .l-firecracker--two {
   transform: rotate3d(-1, 10, -20, 153deg);
   z-index: -1;
