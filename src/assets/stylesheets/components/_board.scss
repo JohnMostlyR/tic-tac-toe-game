@@ -3,7 +3,7 @@
 }
 
 .c-board__line {
-  height: 10px;
+  height: 0.7824726vh;
   position: absolute;
   width: 100%;
   z-index: +1;
@@ -70,7 +70,7 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
-  margin-left: -12px;
+  margin-left: -0.9389671vh;
   position: relative;
   transition: opacity $global-transition;
 }

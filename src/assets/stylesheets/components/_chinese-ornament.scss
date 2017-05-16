@@ -6,8 +6,8 @@
 //  </div>
 //</div>
 
-$ornament-height: 200px;
-$ornament-width: 16px;
+$ornament-height: 15.6494523vh;
+$ornament-width: 1.2519562vh;
 
 .c-ornament {
   height: $ornament-height;
@@ -22,12 +22,12 @@ $ornament-width: 16px;
     position: relative;
     background-color: #ffeeb5;
     background-image: linear-gradient(to right, #ae8913, #ffeeb5);
-    border-radius: 2px;
+    border-radius: 0.1564945vh;
 
     &:after,
     &:before {
       content: '';
-      height: 4px;
+      height: 0.3129890vh;
       transform: translateX(-50%);
       position: absolute;
       background-color: #e11f27 - 34;
@@ -35,21 +35,21 @@ $ornament-width: 16px;
     }
 
     &:before {
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      top: -4px;
+      border-top-left-radius: 0.3129890vh;
+      border-top-right-radius: 0.3129890vh;
+      top: -0.3129890vh;
     }
 
     &:after {
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      bottom: -4px;
+      border-bottom-left-radius: 0.3129890vh;
+      border-bottom-right-radius: 0.3129890vh;
+      bottom: -0.3129890vh;
     }
   }
 
   &__bobbin {
     height: $ornament-height * 0.667;
-    width: $ornament-width - 2px;
+    width: $ornament-width - 0.1564945vh;
     background-color: #e11f27 - 34;
     background-image: repeating-linear-gradient(to right, #e11f27 - 34, $page-background-color 2%);
   }
@@ -58,7 +58,7 @@ $ornament-width: 16px;
     height: $ornament-height * 0.334;
     left: 50%;
     margin: 0 auto;
-    width: 2px;
+    width: 0.1564945vh;
     background-color: #e11f27 - 50;
   }
 }

@@ -1,4 +1,4 @@
-$rhombus-banner-height: 200px;
+$rhombus-banner-height: 15.6494523vh;
 $rhombus-banner-width: $rhombus-banner-height;
 
 .c-rhombus-banner {
@@ -38,33 +38,33 @@ $rhombus-banner-width: $rhombus-banner-height;
   height: 100%;
   color: #D4AF37;
   width: 100%;
-  font-size: 21px;
-  text-shadow: 1px 0 0 #ffeeb5;
+  font-size: 1.6431925vh;
+  text-shadow: 0.0782473vh 0 0 #ffeeb5;
 }
 
 .c-rhombus-banner__text--left {
   position: absolute;
   transform: rotate(-45deg);
   text-align: center;
-  padding-top: 12px;
+  padding-top: 0.9389671vh;
 }
 
 .c-rhombus-banner__text--right {
   position: absolute;
   transform: rotate(45deg);
   text-align: center;
-  padding-top: 12px;
+  padding-top: 0.9389671vh;
 }
 
 .c-rhombus-banner__text--center {
   position: absolute;
   top: 50%;
-  transform: translateY(-24px); // Half font size
-  font-size: 52px;
+  transform: translateY(-1.8779343vh); // Half font size
+  font-size: 4.0688576vh;
 }
 
 .l-rhombus-banner {
-  margin-bottom: 20px;
+  margin-bottom: 1.5649452vh;
   position: relative;
   transform: scale(.4);
 }

@@ -3,14 +3,14 @@
 }
 
 .c-ttt__btn {
-  margin: 10px;
-  padding: 10px 20px;
+  margin: 0.7824726vh;
+  padding: 0.7824726vh 1.5649452vh;
   appearance: none;
   background-color: transparent;
-  border: 3px solid transparent;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 0.2347418vh solid transparent;
+  border-radius: 19.9530516vh 1.1737089vh 17.6056338vh 1.1737089vh/1.1737089vh 17.6056338vh 1.1737089vh 19.9530516vh;
   font-family: 'Finger Paint', cursive;
-  font-size: 21px;
+  font-size: 1.6431925vh;
   transition: opacity $global-transition;
 
   &:disabled {
@@ -19,16 +19,16 @@
 
   &:active,
   &:focus {
-    border: 3px solid #333;
+    border: 0.2347418vh solid #333;
     outline: none;
   }
 
   &:hover:disabled {
-    border: 3px dotted transparent;
+    border: 0.2347418vh dotted transparent;
   }
 
   &:hover {
-    border: 3px dotted #333;
+    border: 0.2347418vh dotted #333;
   }
 }
 
@@ -39,30 +39,30 @@
   border: none;
 
   &:not(:first-child) {
-    margin-top: 20px;
+    margin-top: 1.5649452vh;
   }
 }
 
 .c-ttt__btn-grp-title {
   width: 100%; // For Firefox
-  font-size: 21px;
+  font-size: 1.6431925vh;
 }
 
 .c-ttt__label {
-  margin: 10px;
-  padding: 10px 20px;
+  margin: 0.7824726vh;
+  padding: 0.7824726vh 1.5649452vh;
   display: inline-block;
-  border: 3px dotted transparent;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  font-size: 25px;
+  border: 0.2347418vh dotted transparent;
+  border-radius: 19.9530516vh 1.1737089vh 17.6056338vh 1.1737089vh/1.1737089vh 17.6056338vh 1.1737089vh 19.9530516vh;
+  font-size: 1.9561815vh;
 
   &:hover {
-    border: 3px dotted #333;
+    border: 0.2347418vh dotted #333;
   }
 }
 
 .c-ttt__radio {
   &:checked + .c-ttt__label {
-    border: 3px solid #333;
+    border: 0.2347418vh solid #333;
   }
 }

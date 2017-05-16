@@ -1,8 +1,8 @@
 // Animated candle
 // slightly changed adoptation of this great pen by Maria
 // http://codepen.io/Shorina/pen/VbepBe
-$flame-height: 150px;
-$wick-height: 50px;
+$flame-height: 11.7370892vh;
+$wick-height: 3.9123631vh;
 $orange: #ff6a00;
 $orange-yellow: #ff9224;
 $dark: #2c2b39;
@@ -13,10 +13,10 @@ $yellow-grey: #58523a;
 
 .c-candle {
   bottom: 30vmin;
-  height: 170px;
+  height: 13.3020344vh;
   position: absolute;
-  right: -160px;
-  width: 70px;
+  right: -12.5195618vh;
+  width: 5.4773083vh;
 }
 
 .c-candle__wick{
@@ -25,22 +25,22 @@ $yellow-grey: #58523a;
   position: absolute;
   top: $flame-height - 0.8 * $wick-height;
   transform: translateX(-50%) skewX(2deg) scale(0.5);
-  width: 6px;
+  width: 0.4694836vh;
   background: #23161a;
   border-radius: 10%;
-  box-shadow: 0 0 2px 0 black;
+  box-shadow: 0 0 0.1564945vh 0 black;
 
   &:before{
     content: '';
-    height: 10px;
+    height: 0.7824726vh;
     left: 50%;
     position: absolute;
     width: 0;
     box-shadow:
-      0 -14px 10px 8px white,
-      0 -10px 10px 8px rgba(255,215,0,0.7), //gold
-      0 -3px 10px 8px rgba(255,106,0,0.7),  //orange
-      0 6px 3px 4px black;
+      0 -1.0954617vh 0.7824726vh 0.6259781vh white,
+      0 -0.7824726vh 0.7824726vh 0.6259781vh rgba(255,215,0,0.7), //gold
+      0 -0.2347418vh 0.7824726vh 0.6259781vh rgba(255,106,0,0.7),  //orange
+      0 0.4694836vh 0.2347418vh 0.3129890vh black;
   }
 
   &:after{
@@ -51,12 +51,12 @@ $yellow-grey: #58523a;
     position: absolute;
     width: 0;
     box-shadow:
-      0 5px 2px 3px gold,
-      0 20px 2px 14px gold,
-      0 -6px 4px 5px rgba(98, 33, 27, 0.8),  //dark orange
-      0 0px 1px 4px rgba(255, 106, 0, 0.7),  //orange
-      0 0px 3px 4px $orange,
-      0 5px 3px 4px gold;
+      0 0.3912363vh 0.1564945vh 0.2347418vh gold,
+      0 1.5649452vh 0.1564945vh 1.0954617vh gold,
+      0 -0.4694836vh 0.3129890vh 0.3912363vh rgba(98, 33, 27, 0.8),  //dark orange
+      0 0 0.0782473vh 0.3129890vh rgba(255, 106, 0, 0.7),  //orange
+      0 0 0.2347418vh 0.3129890vh $orange,
+      0 0.3912363vh 0.2347418vh 0.3129890vh gold;
   }
 }
 
@@ -66,8 +66,7 @@ $yellow-grey: #58523a;
   position: relative;
   transform: scale(0.5);
   transform-origin: 50% 90%;
-  width: 20px;
-  //animation: move 3s infinite, move-left 3s infinite;
+  width: 1.5649452vh;
 
   &__top {
     height: 100%;
@@ -75,60 +74,60 @@ $yellow-grey: #58523a;
     position: absolute;
     top: 0;
     transform: skewY(-10deg);
-    width: 20px;
+    width: 1.5649452vh;
     animation: flame-up 4s infinite;
     background: white;
     border-top-left-radius: 500%;
-    border-bottom-left-radius: 50px;
+    border-bottom-left-radius: 3.9123631vh;
     border-top-right-radius: 500%;
-    border-bottom-right-radius: 50px;
+    border-bottom-right-radius: 3.9123631vh;
     box-shadow:
-      0 0 0 3px white,
-      0 -20px 1px 4px white,
-      0 -25px 2px 3px gold,
-      0 -30px 5px 4px $orange,  //top
-      0 0px 150px 10px $orange, //global
-      0 -10px 2px 4px white,
-      0 -5px 3px 3px white;
+      0 0 0 0.2347418vh white,
+      0 -1.5649452vh 0.0782473vh 0.3129890vh white,
+      0 -1.9561815vh 0.1564945vh 0.2347418vh gold,
+      0 -2.3474178vh 0.3912363vh 0.3129890vh $orange,  //top
+      0 0 11.7370892vh 0.7824726vh $orange, //global
+      0 -0.7824726vh 0.1564945vh 0.3129890vh white,
+      0 -0.3912363vh 0.2347418vh 0.2347418vh white;
   }
 
   &__shadows {
-    height: 60px;
+    height: 4.6948357vh;
     left: 50%;
     position: absolute;
     top: 0;
-    width: 1px;
+    width: 0.0782473vh;
     border-radius: 50%;
     box-shadow:
-      0 5px 20px 15px gold,
-      0 0 100px 20px $orange,
-      0 15px 50px 15px $orange,
-      5px 30px 5px 13px $orange,
-      5px 50px 5px 13px $orange,
-      0 75px 50px 30px black;
+      0 0.3912363vh 1.5649452vh 1.1737089vh gold,
+      0 0 4.6948357vh 1.5649452vh $orange,
+      0 1.1737089vh 3.9123631vh 1.1737089vh $orange,
+      0.3912363vh 2.3474178vh 0.3912363vh 1.0172144vh $orange,
+      0.3912363vh 3.9123631vh 0.3912363vh 1.0172144vh $orange,
+      0 5.8685446vh 3.9123631vh 2.3474178vh black;
   }
 
   &__bottom {
-    bottom: 6px;
-    height: 8px;
-    left: 9px;
+    bottom: 0.4694836vh;
+    height: 0.6259781vh;
+    left: 0.7042254vh;
     position: absolute;
     transform: scale(0.9);
-    width: 1px;
+    width: 0.0782473vh;
     border-radius: 1%;
     background: $dark;
     box-shadow:
-      0 6px 10px 12px rgba(60, 76, 125, 0.3), //dark blue
-      0 0 4px 8px $dark,
-      0 -12px 10px 8px rgba(255,106,0, 0.5),  //orange
-      0 5px 7px 12px $dark,
-      0 -3px 10px 12px $dark,
-      5px -10px 10px 5px red,
-      0 -15px 10px 10px gold,
-      5px -25px 10px 5px gold,
-      0 2px 5px 10px $blue-dark,
-      0 -2px 2px 14px $blue-light,
-      0 2px 10px 12px $blue-light;
+      0 0.4694836vh 0.7824726vh 0.9389671vh rgba(60, 76, 125, 0.3), //dark blue
+      0 0 0.3129890vh 0.6259781vh $dark,
+      0 -0.9389671vh 0.7824726vh 0.6259781vh rgba(255,106,0, 0.5),  //orange
+      0 0.3912363vh 0.5477308vh 0.9389671vh $dark,
+      0 -0.2347418vh 0.7824726vh 0.9389671vh $dark,
+      0.3912363vh -0.7824726vh 0.7824726vh 0.3912363vh red,
+      0 -1.1737089vh 0.7824726vh 0.7824726vh gold,
+      0.3912363vh -1.9561815vh 0.7824726vh 0.3912363vh gold,
+      0 0.1564945vh 0.3912363vh 0.7824726vh $blue-dark,
+      0 -0.1564945vh 0.1564945vh 1.0954617vh $blue-light,
+      0 0.1564945vh 0.7824726vh 0.9389671vh $blue-light;
   }
 }
 
@@ -140,14 +139,14 @@ $yellow-grey: #58523a;
   animation: inner-glow 4s infinite;
   background: $orange-yellow;
   background: linear-gradient(to bottom, rgba(246,169,20,1) 0%,rgba(187,121,16,1) 31%,rgba(41,21,10,1) 100%);
-  border-top-left-radius: 34px;
-  border-top-right-radius: 14px;
+  border-top-left-radius: 2.6604069vh;
+  border-top-right-radius: 1.0954617vh;
   box-shadow:
-    inset 0 14px 13px -10px #fbf348,
-    inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
-    inset 0 2px 2px 0 black,
-    0 0 1px 0 #ff6a00,
-    inset 0 -50px 115px #29150a;
+    inset 0 1.0954617vh 1.0172144vh -0.7824726vh #fbf348,
+    inset 0 2.0344288vh 9.6244131vh -2.4256651vh rgba(255, 0, 0, 0.4),
+    inset 0 0.1564945vh 0.1564945vh 0 black,
+    0 0 0.0782473vh 0 #ff6a00,
+    inset 0 -3.9123631vh 8.9984351vh #29150a;
 }
 
 @keyframes move {
@@ -173,13 +172,13 @@ $yellow-grey: #58523a;
 @keyframes flame-up {
   50% {
     box-shadow:
-      0 0 0 3px white,
-      0 -38px 1px 2px white,
-      0 -41px 2px 3px gold,
-      0 -50px 5px 4px $orange,  //orange top
-      0 0px 150px 10px $orange, //orange global
-      0 -10px 2px 4px white,
-      0 -5px 3px 3px white;
+      0 0 0 0.2347418vh white,
+      0 -2.9733959vh 0.0782473vh 0.1564945vh white,
+      0 -3.2081377vh 0.1564945vh 0.2347418vh gold,
+      0 -3.9123631vh 0.3912363vh 0.3129891vh $orange,  //orange top
+      0 0 11.7370892vh 0.7824726vh $orange, //orange global
+      0 -0.7824726vh 0.1564945vh 0.3129890vh white,
+      0 -0.3912363vh 0.2347418vh 0.2347418vh white;
   }
 }
 
@@ -192,10 +191,10 @@ $yellow-grey: #58523a;
 @keyframes inner-glow {
   50% {
     box-shadow:
-      inset 0 14px 13px -8px #fbf348 + 20,
-      inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
-      inset 0 2px 2px 0 black,
-      0 0 1px 0 #ff6a00,
-      inset 0 -50px 82px #29150a;
+      inset 0 1.0954617vh 1.0172144vh -0.6259781vh #fbf348 + 20,
+      inset 0 2.0344288vh 9.6244132vh -2.4256651vh rgba(255, 0, 0, 0.4),
+      inset 0 0.1564945vh 0.1564945vh 0 black,
+      0 0 0.0782473vh 0 #ff6a00,
+      inset 0 -3.9123631vh 6.4162754vh #29150a;
   }
 }
