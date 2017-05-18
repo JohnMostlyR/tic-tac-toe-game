@@ -1,14 +1,14 @@
-$button-height: 7.8247261vh;
-$button-width: 7.8247261vh;
+$button-height: 11.73708915vh;
+$button-width: 11.73708915vh;
 
-$height: 2.3474178vh;
-$width: 7.0422535vh;
+$height: 3.5211267vh;
+$width: 10.56338025vh;
 
 .c-firecracker {
   height: 100%;
   position: relative;
   background-color: #e11f27;
-  box-shadow: inset 0 0 2.3474178vh rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 3.5211267vh rgba(0, 0, 0, 0.5);
 
   &:after,
   &:before {
@@ -24,18 +24,18 @@ $width: 7.0422535vh;
   &:after {
     right: -$height / 3 * 0.5;
     z-index: +1;
-    box-shadow: inset 0 0 1.5649452vh rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 2.3474178vh rgba(0, 0, 0, 0.5);
   }
 
   &:before {
     z-index: -1;
     left: -$height / 3 * 0.5;
     background-color: #e11f27;
-    box-shadow: inset 0 0 1.5649452vh rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 2.3474178vh rgba(0, 0, 0, 0.5);
   }
 
   &__fuse {
-    height: 0.2347418vh;
+    height: 0.3521127vh;
     position: absolute;
     right: -$width * 0.5;
     top: 50%;
@@ -48,9 +48,10 @@ $width: 7.0422535vh;
     left: 0;
     position: absolute;
     right: 0;
-    top: 40%;
+    //top: 40%;
     transform: rotate(180deg);
     color: gold;
+    font-size: 3vh;
     text-align: center;
   }
 }
@@ -61,7 +62,7 @@ $width: 7.0422535vh;
 }
 
 .l-firecracker--one {
-  transform: rotate3d(4, -4, -5, 69deg) translateX(-1.5649452vh);
+  transform: rotate3d(4, -4, -5, 69deg) translateX(-2.3474178vh);
 }
 
 .l-firecracker--one .c-firecracker__text {

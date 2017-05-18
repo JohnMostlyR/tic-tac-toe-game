@@ -1,5 +1,5 @@
 // Animated candle
-// slightly changed adoptation of this great pen by Maria
+// slightly changed adaptation of this great pen by Maria
 // http://codepen.io/Shorina/pen/VbepBe
 $flame-height: 11.7370892vh;
 $wick-height: 3.9123631vh;
@@ -12,11 +12,11 @@ $yellow: #fbf348;
 $yellow-grey: #58523a;
 
 .c-candle {
-  bottom: 30vmin;
-  height: 13.3020344vh;
+  bottom: 20vh;
+  height: 17vh;
   position: absolute;
-  right: -12.5195618vh;
-  width: 5.4773083vh;
+  right: 9vw;
+  width: 7vh;
 }
 
 .c-candle__wick{

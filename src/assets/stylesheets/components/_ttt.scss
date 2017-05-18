@@ -8,8 +8,17 @@
 .c-main {
   //align-items: center;
   display: flex;
-  height: 100vmin;
+  height: 100vh;
   justify-content: center;
+}
+
+.l-center {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  justify-content: center;
+  //transform: scale(1.5);
 }
 
 .l-row {
@@ -21,11 +30,22 @@
   display: flex;
   flex: 1 1 100%;
   flex-flow: column;
-  height: 100%;
+
+  &:not(:first-of-type) {
+    margin-left: 5vw * 1.5;
+  }
 }
 
 .l-col--half {
   flex: 1 1 50%;
+}
+
+.l-col--one-thirds {
+  flex: 1 1 33.3333333%;
+}
+
+.l-col--two-thirds {
+  flex: 1 1 66.6666667%;
 }
 
 .c-ttt {

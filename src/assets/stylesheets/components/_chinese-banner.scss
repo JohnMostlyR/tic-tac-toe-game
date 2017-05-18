@@ -2,31 +2,27 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 6vmin;
-  padding: 1vmin 2.5vmin;
+  margin-top: 6vh;
+  padding: 1vh 2.5vh;
   position: relative;
   background-color: #e11f27;
   border: 0.1564945vh solid #D4AF37;
   color: #D4AF37;
   box-shadow: inset 0 0 7.8247261vh #e11f27 - 150, 0 0 0 0.5477308vh #e11f27 - 100;
-  font-size: 4vmin;
+  font-size: 4vh;
   text-shadow: 0.0782473vh 0 0 #ffeeb5;
 
   &:before {
     content: '';
-    height: 6vmin;
+    height: 6vh;
     position: absolute;
-    top: -3.4vmin;
+    top: -3.4vh;
     transform: rotate(45deg);
-    width: 6vmin;
+    width: 6vh;
     z-index: -1;
     border: 0.1564945vh solid #e11f27 - 50;
     border-radius: 0.3912363vh;
   }
-}
-
-.l-banner {
-  margin-right: 9vmin;
 }
 
 .l-banner-ornament {

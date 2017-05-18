@@ -6,28 +6,32 @@
         {{> src/partials/_widget-banner }}
       </div>
       <div class="l-col">
-        <div class="l-row">
-          <!-- insert scores here -->
-          {{> src/partials/_widget-scores }}
-        </div>
-        <div class="l-row">
-          <!-- insert whose-turn here -->
-          {{> src/partials/_widget-whose-turn }}
-        </div>
-        <div class="l-row">
-          <div class="l-col">
-            <!-- insert scroll here -->
-            {{> src/partials/_widget-scroll }}
-            {{> src/partials/_widget-candle }}
-            {{> src/partials/_widget-end-result }}
+        <div class="l-center">
+          <div class="l-row">
+            <div class="l-col">
+              <!-- insert whose-turn here -->
+              {{> src/partials/_widget-whose-turn }}
+            </div>
+            <div class="l-col">
+              <!-- insert scroll here -->
+              {{> src/partials/_widget-scroll }}
+            </div>
+            <div class="l-col">
+              <!-- insert scores here -->
+              {{> src/partials/_widget-scores }}
+            </div>
           </div>
-        </div>
-        <div class="l-row">
-          <div class="l-col">
-            <!-- insert reset button here -->
-            {{> src/partials/_widget-reset-button }}
+          <div class="l-row">
+            <div class="l-col">
+              <!-- insert reset button here -->
+              {{> src/partials/_widget-reset-button }}
+            </div>
           </div>
+          {{> src/partials/_widget-end-result }}
         </div>
+      </div>
+      <div class="l-col">
+        {{> src/partials/_widget-candle }}
       </div>
     </div>
   </section>

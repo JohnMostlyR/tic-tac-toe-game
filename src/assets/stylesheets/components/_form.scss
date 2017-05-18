@@ -3,14 +3,14 @@
 }
 
 .c-ttt__btn {
-  margin: 0.7824726vh;
-  padding: 0.7824726vh 1.5649452vh;
+  margin: 1.1737089vh;
+  padding: 1.1737089vh 2.3474178vh;
   appearance: none;
   background-color: transparent;
-  border: 0.2347418vh solid transparent;
-  border-radius: 19.9530516vh 1.1737089vh 17.6056338vh 1.1737089vh/1.1737089vh 17.6056338vh 1.1737089vh 19.9530516vh;
+  border: 0.3521127vh solid transparent;
+  border-radius: 29.9295774vh 1.76056335vh 26.4084507vh 1.76056335vh/1.76056335vh 26.4084507vh 1.76056335vh 29.9295774vh;
   font-family: 'Finger Paint', cursive;
-  font-size: 1.6431925vh;
+  font-size: 2.46478875vh;
   transition: opacity $global-transition;
 
   &:disabled {
@@ -19,16 +19,16 @@
 
   &:active,
   &:focus {
-    border: 0.2347418vh solid #333;
+    border: 0.3521127vh solid #333;
     outline: none;
   }
 
   &:hover:disabled {
-    border: 0.2347418vh dotted transparent;
+    border: 0.3521127vh dotted transparent;
   }
 
   &:hover {
-    border: 0.2347418vh dotted #333;
+    border: 0.3521127vh dotted #333;
   }
 }
 
@@ -39,30 +39,30 @@
   border: none;
 
   &:not(:first-child) {
-    margin-top: 1.5649452vh;
+    margin-top: 2.3474178vh;
   }
 }
 
 .c-ttt__btn-grp-title {
   width: 100%; // For Firefox
-  font-size: 1.6431925vh;
+  font-size: 2.46478875vh;
 }
 
 .c-ttt__label {
-  margin: 0.7824726vh;
-  padding: 0.7824726vh 1.5649452vh;
+  margin: 1.1737089vh;
+  padding: 1.1737089vh 2.3474178vh;
   display: inline-block;
-  border: 0.2347418vh dotted transparent;
-  border-radius: 19.9530516vh 1.1737089vh 17.6056338vh 1.1737089vh/1.1737089vh 17.6056338vh 1.1737089vh 19.9530516vh;
-  font-size: 1.9561815vh;
+  border: 0.3521127vh solid transparent;
+  border-radius: 29.9295774vh 1.76056335vh 26.4084507vh 1.76056335vh/1.76056335vh 26.4084507vh 1.76056335vh 29.9295774vh;
+  font-size: 2.93427225vh;
 
   &:hover {
-    border: 0.2347418vh dotted #333;
+    border: 0.3521127vh dotted #333;
   }
 }
 
 .c-ttt__radio {
   &:checked + .c-ttt__label {
-    border: 0.2347418vh solid #333;
+    border: 0.3521127vh solid #333;
   }
 }

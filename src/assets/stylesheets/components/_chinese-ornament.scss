@@ -10,11 +10,10 @@ $ornament-height: 15.6494523vh;
 $ornament-width: 1.2519562vh;
 
 .c-ornament {
-  height: $ornament-height;
+  height: 100%;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
-  width: $ornament-width;
   z-index: -1;
 
   &__knot {
@@ -65,5 +64,7 @@ $ornament-width: 1.2519562vh;
 
 .l-ornament {
   bottom: 0;
+  height: $ornament-height;
   position: absolute;
+  width: $ornament-width;
 }

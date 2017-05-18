@@ -3,7 +3,7 @@
 }
 
 .c-board__line {
-  height: 0.7824726vh;
+  height: 1.1737089vh;
   position: absolute;
   width: 100%;
   z-index: +1;
@@ -12,24 +12,24 @@
 
   &--top {
     left: 0;
-    top: 10vh;
+    top: 15vh;
   }
 
   &--bottom {
-    left: 1vh;
-    top: 20.8vh;
+    left: 1.5vh;
+    top: 31.2vh;
     transform: rotate(180deg);
   }
 
   &--left {
-    left: 11.4vh;
-    top: -1vh;
+    left: 17.1vh;
+    top: -1.5vh;
     transform-origin: 0;
     transform: rotate(90deg);
   }
 
   &--right {
-    right: 10.4vh;
+    right: 15.6vh;
     top: 0;
     transform-origin: 100%;
     transform: rotate(-90deg);
@@ -37,15 +37,15 @@
 }
 
 .c-board__btn {
-  height: 10vh;
-  margin: 0 0 1vh 1vh;
-  width: 10vh;
+  height: 15vh;
+  margin: 0 0 1.5vh 1.5vh;
+  width: 15vh;
   appearance: none;
   background-color: transparent;
   border: none;
   color: transparent;
   font-family: 'Finger Paint', cursive;
-  font-size: 5vh;
+  font-size: 7.5vh;
   transition: color $global-transition;
 
   &:active,
@@ -58,19 +58,12 @@
   }
 }
 
-.c-board__cell {
-  margin: 0 0 1vh 1vh;
-  display: inline-block;
-  float: left;
-  z-index: -1;
-}
-
 .l-board {
   align-items: center;
   display: flex;
   flex-flow: column;
   justify-content: center;
-  margin-left: -0.9389671vh;
+  margin-left: -1.40845065vh;
   position: relative;
   transition: opacity $global-transition;
 }
