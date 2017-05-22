@@ -40,8 +40,8 @@
 
     // Move the scroll up a bit as there would be a huge space where the scores and the indicator of whose turn it is
     // would otherwise be.
-    const scrollNode = document.querySelector('.l-scroll');
-    scrollNode.style.marginTop = '-10vmin';
+    // const scrollNode = document.querySelector('.l-scroll');
+    // scrollNode.style.marginTop = '-10vmin';
 
     // Hide the score board, the indicator of whose turn it is and the game board.
     ['l-rhombus-banner', 'l-whose-turn', 'l-board', 'l-reset-button'].forEach((cssClass) => {

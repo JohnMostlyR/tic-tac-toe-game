@@ -8,17 +8,22 @@
 .c-main {
   //align-items: center;
   display: flex;
-  height: 100vh;
+  height: 100vmin;
   justify-content: center;
+  width: 100vw;
 }
 
 .l-center {
   align-items: center;
   display: flex;
   flex-flow: column;
-  height: 100vh;
+  height: 100vmin;
   justify-content: center;
-  //transform: scale(1.5);
+}
+
+.l-center-row {
+  display: flex;
+  width: 100%;
 }
 
 .l-row {
@@ -32,7 +37,7 @@
   flex-flow: column;
 
   &:not(:first-of-type) {
-    margin-left: 5vw * 1.5;
+    margin-left: 3%;
   }
 }
 
@@ -49,6 +54,7 @@
 }
 
 .c-ttt {
+  max-width: 100vw;
   position: relative;
   text-align: center;
   animation: brighten 4s infinite;

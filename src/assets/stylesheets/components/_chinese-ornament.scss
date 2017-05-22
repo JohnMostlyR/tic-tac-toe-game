@@ -6,8 +6,8 @@
 //  </div>
 //</div>
 
-$ornament-height: 15.6494523vh;
-$ornament-width: 1.2519562vh;
+$ornament-height: 15.6494523vmin;
+$ornament-width: 1.2519562vmin;
 
 .c-ornament {
   height: 100%;
@@ -21,12 +21,12 @@ $ornament-width: 1.2519562vh;
     position: relative;
     background-color: #ffeeb5;
     background-image: linear-gradient(to right, #ae8913, #ffeeb5);
-    border-radius: 0.1564945vh;
+    border-radius: 0.1564945vmin;
 
     &:after,
     &:before {
       content: '';
-      height: 0.3129890vh;
+      height: 0.3129890vmin;
       transform: translateX(-50%);
       position: absolute;
       background-color: #e11f27 - 34;
@@ -34,21 +34,21 @@ $ornament-width: 1.2519562vh;
     }
 
     &:before {
-      border-top-left-radius: 0.3129890vh;
-      border-top-right-radius: 0.3129890vh;
-      top: -0.3129890vh;
+      border-top-left-radius: 0.3129890vmin;
+      border-top-right-radius: 0.3129890vmin;
+      top: -0.3129890vmin;
     }
 
     &:after {
-      border-bottom-left-radius: 0.3129890vh;
-      border-bottom-right-radius: 0.3129890vh;
-      bottom: -0.3129890vh;
+      border-bottom-left-radius: 0.3129890vmin;
+      border-bottom-right-radius: 0.3129890vmin;
+      bottom: -0.3129890vmin;
     }
   }
 
   &__bobbin {
     height: $ornament-height * 0.667;
-    width: $ornament-width - 0.1564945vh;
+    width: $ornament-width - 0.1564945vmin;
     background-color: #e11f27 - 34;
     background-image: repeating-linear-gradient(to right, #e11f27 - 34, $page-background-color 2%);
   }
@@ -57,7 +57,7 @@ $ornament-width: 1.2519562vh;
     height: $ornament-height * 0.334;
     left: 50%;
     margin: 0 auto;
-    width: 0.1564945vh;
+    width: 0.1564945vmin;
     background-color: #e11f27 - 50;
   }
 }

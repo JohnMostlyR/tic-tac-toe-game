@@ -3,14 +3,14 @@
 }
 
 .c-ttt__btn {
-  margin: 1.1737089vh;
-  padding: 1.1737089vh 2.3474178vh;
+  margin: 1.1737089vmin;
+  padding: 1.1737089vmin 2.3474178vmin;
   appearance: none;
   background-color: transparent;
-  border: 0.3521127vh solid transparent;
-  border-radius: 29.9295774vh 1.76056335vh 26.4084507vh 1.76056335vh/1.76056335vh 26.4084507vh 1.76056335vh 29.9295774vh;
+  border: 0.3521127vmin solid transparent;
+  border-radius: 29.9295774vmin 1.76056335vmin 26.4084507vmin 1.76056335vmin/1.76056335vmin 26.4084507vmin 1.76056335vmin 29.9295774vmin;
   font-family: 'Finger Paint', cursive;
-  font-size: 2.46478875vh;
+  font-size: 2.46478875vmin;
   transition: opacity $global-transition;
 
   &:disabled {
@@ -19,16 +19,16 @@
 
   &:active,
   &:focus {
-    border: 0.3521127vh solid #333;
+    border: 0.3521127vmin solid #333;
     outline: none;
   }
 
   &:hover:disabled {
-    border: 0.3521127vh dotted transparent;
+    border: 0.3521127vmin dotted transparent;
   }
 
   &:hover {
-    border: 0.3521127vh dotted #333;
+    border: 0.3521127vmin dotted #333;
   }
 }
 
@@ -39,30 +39,30 @@
   border: none;
 
   &:not(:first-child) {
-    margin-top: 2.3474178vh;
+    margin-top: 2.3474178vmin;
   }
 }
 
 .c-ttt__btn-grp-title {
   width: 100%; // For Firefox
-  font-size: 2.46478875vh;
+  font-size: 2.46478875vmin;
 }
 
 .c-ttt__label {
-  margin: 1.1737089vh;
-  padding: 1.1737089vh 2.3474178vh;
+  margin: 1.1737089vmin;
+  padding: 1.1737089vmin 2.3474178vmin;
   display: inline-block;
-  border: 0.3521127vh solid transparent;
-  border-radius: 29.9295774vh 1.76056335vh 26.4084507vh 1.76056335vh/1.76056335vh 26.4084507vh 1.76056335vh 29.9295774vh;
-  font-size: 2.93427225vh;
+  border: 0.3521127vmin solid transparent;
+  border-radius: 29.9295774vmin 1.76056335vmin 26.4084507vmin 1.76056335vmin/1.76056335vmin 26.4084507vmin 1.76056335vmin 29.9295774vmin;
+  font-size: 2.93427225vmin;
 
   &:hover {
-    border: 0.3521127vh dotted #333;
+    border: 0.3521127vmin dotted #333;
   }
 }
 
 .c-ttt__radio {
   &:checked + .c-ttt__label {
-    border: 0.3521127vh solid #333;
+    border: 0.3521127vmin solid #333;
   }
 }

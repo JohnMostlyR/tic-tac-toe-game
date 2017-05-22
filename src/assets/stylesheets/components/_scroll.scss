@@ -1,12 +1,12 @@
-$c-scroll-knob-height: 5.4773083vh * 1.5;
+$c-scroll-knob-height: 5.4773083vmin * 1.5;
 $c-scroll-knob-width: $c-scroll-knob-height / 2.34;
-$c-scroll-scroll-height: 5.0469483vh;
-$c-scroll-scroll-width: 58.68544605vh;
+$c-scroll-scroll-height: 5.0469483vmin;
+$c-scroll-scroll-width: 58.68544605vmin;
 
-$c-scroll-paper-height: 58.68544605vh;
+$c-scroll-paper-height: 58.68544605vmin;
 $c-scroll-paper-color: #dac48b;
 
-$l-scroll-height: 70.4225352vh;
+$l-scroll-height: 70.4225352vmin;
 
 .c-scroll {
   font-family: 'Finger Paint', cursive;
@@ -18,7 +18,7 @@ $l-scroll-height: 70.4225352vh;
     min-height: $c-scroll-scroll-height;
     position: relative;
     background-image: linear-gradient(to top, #c19b5d + 10 0%, #d9ba7e + 10 3%, #ebd095 10%, #ebd095 89%, #e5c78b 91%, #c19b5d + 20 100%);
-    box-shadow: inset 0 0 3.7558686vh #c19b5d;
+    box-shadow: inset 0 0 3.7558686vmin #c19b5d;
   }
 
   &__holder {
@@ -32,27 +32,27 @@ $l-scroll-height: 70.4225352vh;
     height: $c-scroll-scroll-height;
     position: relative;
     width: $c-scroll-scroll-width;
-    margin: 0 0.58685445vh;
+    margin: 0 0.58685445vmin;
     z-index: +1;
 
     &:before {
       content: '';
-      bottom: 0.23474175vh;
-      left: -0.8vh;
+      bottom: 0.23474175vmin;
+      left: -0.8vmin;
       position: absolute;
-      top: 0.23474175vh;
-      width: 0.8vh;
+      top: 0.23474175vmin;
+      width: 0.8vmin;
       background-color: #4A2B11;
       background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
     }
 
     &:after {
       content: '';
-      bottom: 0.23474175vh;
-      right: -0.8vh;
+      bottom: 0.23474175vmin;
+      right: -0.8vmin;
       position: absolute;
-      top: 0.23474175vh;
-      width: 0.8vh;
+      top: 0.23474175vmin;
+      width: 0.8vmin;
       background-color: #4A2B11;
       background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
     }
@@ -61,8 +61,8 @@ $l-scroll-height: 70.4225352vh;
   &__knob {
     background-color: #CD9E53;
     background-image: linear-gradient(to right, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
-    box-shadow: inset 0 0.7042254vh 3.7558686vh #4a2b11;
-    border-radius: 1.76056335vh/3.5211267vh;
+    box-shadow: inset 0 0.7042254vmin 3.7558686vmin #4a2b11;
+    border-radius: 1.76056335vmin/3.5211267vmin;
     height: $c-scroll-knob-height;
     position: relative;
     width: $c-scroll-knob-width;
@@ -75,7 +75,7 @@ $l-scroll-height: 70.4225352vh;
   display: flex;
   left: 0;
   justify-content: center;
-  padding: 0 2.3474178vh;
+  padding: 0 2.3474178vmin;
   position: absolute;
   right: 0;
   top: 0;
@@ -83,11 +83,11 @@ $l-scroll-height: 70.4225352vh;
 }
 
 .c-scroll__holder--bottom {
-  margin-top: -2.3474178vh;
+  margin-top: -2.3474178vmin;
 }
 
 .c-scroll__holder--top {
-  margin-bottom: -2.3474178vh;
+  margin-bottom: -2.3474178vmin;
 }
 
 .c-scroll__knob--small {
@@ -96,11 +96,11 @@ $l-scroll-height: 70.4225352vh;
 }
 
 .c-scroll__knob--left {
-  left: -2.3474178vh;
+  left: -2.3474178vmin;
 }
 
 .c-scroll__knob--right {
-  right: -2.3474178vh;
+  right: -2.3474178vmin;
 }
 
 .c-scroll__roll--bottom {
