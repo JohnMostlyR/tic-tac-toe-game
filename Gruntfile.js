@@ -292,7 +292,7 @@ module.exports = function (grunt) {
       options: {
         processors: [
           // require('pixrem')(), // add fallbacks for rem units
-          require('autoprefixer'), // add vendor prefixes
+          // require('autoprefixer'), // add vendor prefixes
         ],
       },
       dev: {
@@ -432,6 +432,7 @@ module.exports = function (grunt) {
       'babel:dev',                  // Transpile ES6 to ES5
       'sass:dev',                   // Compile SASS to CSS
       'compile-handlebars:globbedTemplateAndOutput',  // Compile handlebar templates
+      'purifycss',                  // Remove unused style selectors from CSS files
       'postcss:dev',                // Perform PostCSS tasks on CSS files
       'express',                    // Start web server
       'watch',                      // Watch for any changes and perform tasks when needed

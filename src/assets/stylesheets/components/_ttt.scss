@@ -9,15 +9,12 @@
 
   @media (orientation: landscape) {
     flex-direction: row;
+    justify-content: center;
   }
 }
 
 .c-main {
   align-self: center;
-  //flex: 1;
-
-  @media (orientation: portrait) {
-  }
 }
 
 .c-ttt {
