@@ -1,7 +1,7 @@
 // SETTINGS
 @import '../../../node_modules/normalize.css/normalize';
 @import 'settings/global';
-//@import 'settings/images';
+@import 'settings/images';
 //@import 'settings/z-indexes';
 
 // TOOLS
@@ -11,6 +11,7 @@
 @import 'generic/fonts';
 
 // ELEMENTS
+@import 'elements/html';
 @import 'elements/body';
 //@import 'elements/bold';
 //@import 'elements/emphasis';
@@ -25,12 +26,14 @@
 // UTILITIES
 //@import 'utilities/toggle';
 //@import 'utilities/truncate';
+@import 'utilities/center-text';
 @import 'utilities/visually-hidden';
 
 //@import '../../../node_modules/animate-scss/_properties';
 //@import '../../../node_modules/animate-scss/_attention-seekers/attention-seekers';
 
 // COMPONENTS
+@import 'components/layout';
 @import 'components/board';
 @import 'components/scroll';
 @import 'components/candle';

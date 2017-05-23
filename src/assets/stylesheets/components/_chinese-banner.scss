@@ -2,8 +2,6 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 6vmin;
-  max-width: 6vmin;
   padding: 1vmin 2.5vmin;
   position: relative;
   background-color: #e11f27;
@@ -13,20 +11,43 @@
   font-size: 4vmin;
   text-shadow: 0.0782473vmin 0 0 #ffeeb5;
 
-  &:before {
-    content: '';
+  @media (orientation: portrait) {
     height: 6vmin;
-    position: absolute;
-    top: -3.4vmin;
-    transform: rotate(45deg);
-    width: 6vmin;
-    z-index: -1;
-    border: 0.1564945vmin solid #e11f27 - 50;
-    border-radius: 0.3912363vmin;
+    margin: 1em;
+
+    &__char {
+      display: inline;
+    }
+
+    &__word {
+      display: inline;
+    }
+  }
+
+  @media (orientation: landscape) {
+    margin-top: 6vmin;
+    width: 8vmin;
+    text-align: center;
+
+    &:before {
+      content: '';
+      height: 6vmin;
+      position: absolute;
+      top: -3.4vmin;
+      transform: rotate(45deg);
+      width: 6vmin;
+      z-index: -1;
+      border: 0.1564945vmin solid #e11f27 - 50;
+      border-radius: 0.3912363vmin;
+    }
   }
 }
 
 .l-banner-ornament {
   position: absolute;
   bottom: 0;
+
+  @media (orientation: portrait) {
+    display: none;
+  }
 }

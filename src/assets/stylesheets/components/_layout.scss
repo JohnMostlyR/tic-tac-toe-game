@@ -1,0 +1,134 @@
+//<div class="l-layout">
+//  <div class="l-layout__item">…</div>
+//  <div class="l-layout__item">…</div>
+//  <div class="l-layout__item">…</div>
+//</div>
+
+.l-layout {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.l-layout__item {
+  flex: 1;
+}
+
+.l-layout--flex-items > .l-layout__item {
+  display: flex;
+}
+
+.l-layout--top {
+  align-items: flex-start;
+}
+
+.l-layout--bottom {
+  align-items: flex-end;
+}
+
+.l-layout--center {
+  align-items: center;
+}
+
+.l-layout--justify-center {
+  justify-content: center;
+}
+
+.l-layout__item--top {
+  align-self: flex-start;
+}
+
+.l-layout__item--bottom {
+  align-self: flex-end;
+}
+
+.l-layout__item--center {
+  align-self: center;
+}
+
+.l-layout__item--auto-size {
+  flex: none;
+}
+
+.l-layout--fit > .l-layout__item {
+  flex: 1;
+}
+
+.l-layout--full > .l-layout__item {
+  flex: 0 0 100%;
+}
+
+.l-layout--1of2 > .l-layout__item {
+  flex: 0 0 50%;
+}
+
+.l-layout--1of3 > .l-layout__item {
+  flex: 0 0 33.3333%;
+}
+
+.l-layout--1of4 > .l-layout__item {
+  flex: 0 0 25%;
+}
+
+@media (orientation: landscape) {
+  .landscape.l-layout > .l-layout__item {
+    flex: 0 0 100%;
+  }
+  .landscape.l-layout--full > .l-layout__item {
+    flex: 1;
+  }
+  .landscape.l-layout--1of2 > .l-layout__item {
+    flex: 0 0 50%;
+  }
+  .landscape.l-layout--1of3 > .l-layout__item {
+    flex: 0 0 33.3333%;
+  }
+  .landscape.l-layout--1of4 > .l-layout__item {
+    flex: 0 0 25%;
+  }
+}
+
+.l-layout--gutters {
+  margin: -1em 0 1em -1em;
+}
+
+.l-layout--gutters > .l-layout__item {
+  padding: 1em 0 0 1em;
+}
+
+.l-layout--gutters-lg {
+  margin: -1.5em 0 1.5em -1.5em;
+}
+
+.l-layout--gutters-lg > .l-layout__item {
+  padding: 1.5em 0 0 1.5em;
+}
+
+.l-layout--gutters-xl {
+  margin: -2em 0 2em -2em;
+}
+
+.l-layout--gutters-xl > .l-layout__item {
+  padding: 2em 0 0 2em;
+}
+
+@media (orientation: landscape) {
+  .landscape.l-layout--gutters {
+    margin: -1em 0 1em -1em;
+  }
+  .landscape.l-layout--gutters > .l-layout__item {
+    padding: 1em 0 0 1em;
+  }
+  .landscape.l-layout--gutters-lg {
+    margin: -1.5em 0 1.5em -1.5em;
+  }
+  .landscape.l-layout--gutters-lg > .l-layout__item {
+    padding: 1.5em 0 0 1.5em;
+  }
+  .landscape.l-layout--gutters-xl {
+    margin: -2em 0 2em -2em;
+  }
+  .landscape.l-layout--gutters-xl > .l-layout__item {
+    padding: 2em 0 0 2em;
+  }
+}

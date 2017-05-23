@@ -1,38 +1,33 @@
+<header class="c-header">
+  <!-- insert banner here -->
+  {{> src/partials/_widget-banner }}
+</header>
 <main class="c-main">
-  <section class="c-ttt">
-    <div class="l-row">
-      <div class="l-col">
-        <!-- insert banner here -->
-        {{> src/partials/_widget-banner }}
-      </div>
-      <div class="l-col">
-        <div class="l-center">
-          <div class="l-center-row">
-            <div class="l-col">
-              <!-- insert whose-turn here -->
-              {{> src/partials/_widget-whose-turn }}
-            </div>
-            <div class="l-col">
-              <!-- insert scroll here -->
-              {{> src/partials/_widget-scroll }}
-            </div>
-            <div class="l-col">
-              <!-- insert scores here -->
-              {{> src/partials/_widget-scores }}
-            </div>
-          </div>
-          <div class="l-row">
-            <div class="l-col">
-              <!-- insert reset button here -->
-              {{> src/partials/_widget-reset-button }}
-            </div>
-          </div>
-          {{> src/partials/_widget-end-result }}
+  <section class="l-layout l-layout--full c-ttt">
+    <div class="l-layout__item">
+      <div class="l-layout l-layout--full landscape">
+        <div class="l-layout__item l-scores">
+          {{> src/partials/_widget-scores }}
+        </div>
+        <div class="l-layout__item l-turns">
+          {{> src/partials/_widget-whose-turn }}
+        </div>
+        <div class="l-layout__item l-scroll">
+          {{> src/partials/_widget-scroll }}
         </div>
       </div>
-      <div class="l-col">
-        {{> src/partials/_widget-candle }}
+    </div>
+    <div class="l-layout__item">
+      <!-- insert reset button here -->
+      {{> src/partials/_widget-reset-button }}
+    </div>
+    <div class="l-layout__item">
+      <div class="l-layout l-layout--full">
+        <div class="l-layout__item l-candle">
+          {{> src/partials/_widget-candle }}
+        </div>
       </div>
     </div>
+    {{> src/partials/_widget-end-result }}
   </section>
 </main>

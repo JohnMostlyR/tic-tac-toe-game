@@ -17,19 +17,19 @@
 
   &--bottom {
     left: 1.5vmin;
-    top: 31.2vmin;
+    top: 29vmin;
     transform: rotate(180deg);
   }
 
   &--left {
-    left: 17.1vmin;
+    left: 15vmin;
     top: -1.5vmin;
     transform-origin: 0;
     transform: rotate(90deg);
   }
 
   &--right {
-    right: 15.6vmin;
+    right: 15vmin;
     top: 0;
     transform-origin: 100%;
     transform: rotate(-90deg);
@@ -38,7 +38,7 @@
 
 .c-board__btn {
   height: 15vmin;
-  margin: 0 0 1.5vmin 1.5vmin;
+  //margin: 0 0 1.5vmin 1.5vmin;
   width: 15vmin;
   appearance: none;
   background-color: transparent;
@@ -59,11 +59,11 @@
 }
 
 .l-board {
-  align-items: center;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  margin-left: -1.40845065vmin;
+  //align-items: center;
+  //display: flex;
+  //flex-flow: column;
+  //justify-content: center;
+  //margin-left: -1.40845065vmin;
   position: relative;
   transition: opacity $global-transition;
 }

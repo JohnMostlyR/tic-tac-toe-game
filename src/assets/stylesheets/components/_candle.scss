@@ -149,12 +149,6 @@ $yellow-grey: #58523a;
     inset 0 -3.9123631vmin 8.9984351vmin #29150a;
 }
 
-.l-candle {
-  height: 100%;
-  position: relative;
-  width: 7vmin;
-}
-
 @keyframes move {
   0% {
     transform: skewX(2deg) skewY(5deg)

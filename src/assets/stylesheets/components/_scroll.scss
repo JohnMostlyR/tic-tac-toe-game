@@ -1,12 +1,13 @@
-$c-scroll-knob-height: 5.4773083vmin * 1.5;
+$c-scroll-knob-height: 8.21596245vmin;
 $c-scroll-knob-width: $c-scroll-knob-height / 2.34;
+$c-scroll-knob-small-width: 2.3474178vmin;
 $c-scroll-scroll-height: 5.0469483vmin;
-$c-scroll-scroll-width: 58.68544605vmin;
+$c-scroll-scroll-margin: 0.8vmin;
+$c-scroll-paper-height: 55vmin;
+//$c-scroll-scroll-width: 100vmin - ($c-scroll-knob-width * 2) - ($c-scroll-scroll-margin * 2) - ($c-scroll-knob-small-width * 2);
+$c-scroll-scroll-width: $c-scroll-paper-height;
 
-$c-scroll-paper-height: 58.68544605vmin;
 $c-scroll-paper-color: #dac48b;
-
-$l-scroll-height: 70.4225352vmin;
 
 .c-scroll {
   font-family: 'Finger Paint', cursive;
@@ -14,9 +15,10 @@ $l-scroll-height: 70.4225352vmin;
   &__paper {
     background-color: $c-scroll-paper-color;
     height: $c-scroll-paper-height;
-    margin: 0 $c-scroll-knob-height / 2;
+    margin: 0 auto;
     min-height: $c-scroll-scroll-height;
     position: relative;
+    width: $c-scroll-scroll-width;
     background-image: linear-gradient(to top, #c19b5d + 10 0%, #d9ba7e + 10 3%, #ebd095 10%, #ebd095 89%, #e5c78b 91%, #c19b5d + 20 100%);
     box-shadow: inset 0 0 3.7558686vmin #c19b5d;
   }
@@ -35,10 +37,10 @@ $l-scroll-height: 70.4225352vmin;
     margin: 0 0.58685445vmin;
     z-index: +1;
 
-    &:before {
+    &:before,
+    &:after {
       content: '';
       bottom: 0.23474175vmin;
-      left: -0.8vmin;
       position: absolute;
       top: 0.23474175vmin;
       width: 0.8vmin;
@@ -46,15 +48,12 @@ $l-scroll-height: 70.4225352vmin;
       background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
     }
 
+    &:before {
+      left: -$c-scroll-scroll-margin;
+    }
+
     &:after {
-      content: '';
-      bottom: 0.23474175vmin;
-      right: -0.8vmin;
-      position: absolute;
-      top: 0.23474175vmin;
-      width: 0.8vmin;
-      background-color: #4A2B11;
-      background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+      right: -$c-scroll-scroll-margin;
     }
   }
 
@@ -96,11 +95,11 @@ $l-scroll-height: 70.4225352vmin;
 }
 
 .c-scroll__knob--left {
-  left: -2.3474178vmin;
+  left: -$c-scroll-knob-small-width;
 }
 
 .c-scroll__knob--right {
-  right: -2.3474178vmin;
+  right: -$c-scroll-knob-small-width;
 }
 
 .c-scroll__roll--bottom {
@@ -121,8 +120,4 @@ $l-scroll-height: 70.4225352vmin;
   animation-timing-function: ease-in, cubic-bezier(0, 0, 0.35, 1);
   animation-delay: 0s, .5s;
   animation-fill-mode: both;
-}
-
-.l-scroll {
-  height: $l-scroll-height;
 }

@@ -1,7 +1,7 @@
 .c-end-result {
   position: relative;
   padding: 2vmin 8vmin;
-  width: 50vmin;
+  width: 100%;
   background-color: rgb(212, 175, 55);
   background-image: linear-gradient(145deg, transparent, rgba(255, 238, 181, 1));
   background-size: 200%;
@@ -27,13 +27,17 @@
 .l-end-result {
   align-self: center;
   display: none;
-  margin-left: -9vmin;
   opacity: 0;
   position: absolute;
   transform: translateY(0);
-  width: 50vmin;
+  width: 100%;
   z-index: +1;
   box-shadow: -1.76056335vmin -1.8779343vmin 7.04225355vmin 0.7042254vmin #62211b;
+
+  @media (orientation: landscape) {
+    margin: 0 15%;
+    width: 70%;
+  }
 }
 
 .l-end-result--show {

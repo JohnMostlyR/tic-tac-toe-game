@@ -3,14 +3,14 @@
 }
 
 .c-ttt__btn {
-  margin: 1.1737089vmin;
-  padding: 1.1737089vmin 2.3474178vmin;
+  margin: 1.1vmin;
+  padding: 1.1vmin 2.2vmin;
   appearance: none;
   background-color: transparent;
   border: 0.3521127vmin solid transparent;
   border-radius: 29.9295774vmin 1.76056335vmin 26.4084507vmin 1.76056335vmin/1.76056335vmin 26.4084507vmin 1.76056335vmin 29.9295774vmin;
   font-family: 'Finger Paint', cursive;
-  font-size: 2.46478875vmin;
+  font-size: 2.4vmin;
   transition: opacity $global-transition;
 
   &:disabled {
@@ -49,12 +49,12 @@
 }
 
 .c-ttt__label {
-  margin: 1.1737089vmin;
-  padding: 1.1737089vmin 2.3474178vmin;
+  margin: 1.1vmin;
+  padding: 1.1vmin 2.2vmin;
   display: inline-block;
   border: 0.3521127vmin solid transparent;
   border-radius: 29.9295774vmin 1.76056335vmin 26.4084507vmin 1.76056335vmin/1.76056335vmin 26.4084507vmin 1.76056335vmin 29.9295774vmin;
-  font-size: 2.93427225vmin;
+  font-size: 2.9vmin;
 
   &:hover {
     border: 0.3521127vmin dotted #333;
