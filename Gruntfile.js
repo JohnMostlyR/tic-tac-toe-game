@@ -292,7 +292,7 @@ module.exports = function (grunt) {
       options: {
         processors: [
           // require('pixrem')(), // add fallbacks for rem units
-          // require('autoprefixer'), // add vendor prefixes
+          require('autoprefixer'), // add vendor prefixes
         ],
       },
       dev: {

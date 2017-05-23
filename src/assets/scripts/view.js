@@ -238,7 +238,7 @@
               subscriber(name, value);
             }
           }
-        }, true);
+        }, false);
         break;
       case 'onClickStart':
         this.form.addEventListener('submit', (ev) => {
@@ -246,7 +246,7 @@
           ev.preventDefault();
           this.form.classList.add('s-disabled');
           subscriber(ev.target.gameType.value, ev.target.avatar.value);
-        }, true);
+        }, false);
         break;
       case 'onClickCell':
         window.addEventListener('click', (ev) => {
@@ -262,7 +262,7 @@
               subscriber(idx);
             }
           }
-        }, true);
+        }, false);
         break;
       // case 'onReset':
       //   window.addEventListener('click', (ev) => {
@@ -272,7 +272,7 @@
       //         subscriber();
       //       }
       //     }
-      //   }, true);
+      //   }, false);
       //   break;
       default:
         console.error(`No such event: ${event}`);
