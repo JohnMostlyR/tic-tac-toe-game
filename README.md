@@ -1,5 +1,7 @@
 # A Chinese Themed Tic-Tac-Toe Game
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Mensae/tic-tac-toe-game.svg)](https://greenkeeper.io/)
+
 As part of my freeCodeCamp Front End Developer Certification.
 
 ## User Stories
